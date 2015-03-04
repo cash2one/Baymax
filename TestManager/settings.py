@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,8 +59,14 @@ WSGI_APPLICATION = 'TestManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'testmanager',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -81,3 +88,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS=(
+#     ("css",os.path.join(STATIC_URL,'css')),
+#     ("js",os.path.join(STATIC_URL,'js')),
+#     ("img",os.path.join(STATIC_URL,'img')),
+# )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR,  'templates'),
+)
