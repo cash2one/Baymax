@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block css %}
+    <style type="text/css">
+        li {
+            list-style: none;
+        }
+
+        #newTask {
+            width: 400px;
+            border: #101010 1px solid;
+            padding: 10px 0 10px 30px;
+            background-color: #dddddd;
+            display: none;
+        }
+    </style>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        function addTask() {
+            $("#newTask").show();
+        }
+
+        function closeNewTask() {
+            $("#newTask").hide();
+        }
+    </script>
+{% endblock %}
+{% block content %}
+
+    <div id="addTask"><input type="button" value="add task" onclick="addTask()"/></div>
+
+    <ul id="newTask">
+        <li><label>TaskName:</label><input type="text" id="TaskName" value=""/></li>
+        <li><label>TaskType:</label><input type="text" id="TaskType" value=""/></li>
+        <li><label>TaskCount:</label><input type="text" id="TaskCount" value=""/></li>
+        <li><label>TaskState:</label><input type="text" id="TaskState" value=""/></li>
+        <li><label>DeviceType:</label><input type="text" id="DeviceType" value=""/></li>
+        <li><label>Desc:</label><input type="text" id="Desc" value=""/></li>
+        <li><label>CreateTime:</label><input type="text" id="CreateTime" value=""/></li>
+        <li><label>UpdateTime:</label><input type="text" id="UpdateTime" value=""/></li>
+        <li><label>CreateWay:</label><input type="text" id="CreateWay" value=""/></li>
+        <li><input type="button" value="ok" onclick="closeNewTask()"></li>
+    </ul>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="80%">
+        <tr>
+            <th>no</th>
+            <th>TaskName</th>
+            <th>TaskType</th>
+            <th>TaskCount</th>
+            <th>TaskState</th>
+            <th>DeviceType</th>
+            <th>Desc</th>
+            <th>CreateTime</th>
+            <th>UpdateTime</th>
+            <th>CreateWay</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.TaskName }}</td>
+                <td>{{ task.TaskType }}</td>
+                <td>{{ task.TaskCount }}</td>
+                <td>{{ task.TaskState }}</td>
+                <td>{{ task.DeviceType }}</td>
+                <td>{{ task.Desc }}</td>
+                <td>{{ task.CreateTime }}</td>
+                <td>{{ task.UpdateTime }}</td>
+                <td>{{ task.CreateWay }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

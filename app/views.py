@@ -15,3 +15,7 @@ def about(request):
     # tasks = Task.objects.all()
     #return render_to_response("resp.html", {"tasks": tasks})
     return render(request, 'app/about.html',context_instance=RequestContext(request))
+
+def task(request):
+    tasks=Task.objects.all()
+    return render_to_response("app/task.html", {"tasks": tasks},context_instance=RequestContext(request))
