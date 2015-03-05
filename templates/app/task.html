@@ -5,12 +5,33 @@
             list-style: none;
         }
 
+        #addTask {
+            width: 900px;
+            height: 50px;
+            margin: 0 auto;
+            position: relative;
+            text-align: left;
+        }
+
         #newTask {
             width: 400px;
             border: #101010 1px solid;
             padding: 10px 0 10px 30px;
             background-color: #dddddd;
+            position: absolute;
             display: none;
+            text-align: left;
+        }
+
+        #newTask li {
+            padding: 3px;
+        }
+
+        #newTask label {
+            width: 100px;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
         }
     </style>
 {% endblock %}
@@ -27,22 +48,28 @@
 {% endblock %}
 {% block content %}
 
-    <div id="addTask"><input type="button" value="add task" onclick="addTask()"/></div>
+    <div id="addTask">
+        <input type="button" value="add task" onclick="addTask()"/>
 
-    <ul id="newTask">
-        <li><label>TaskName:</label><input type="text" id="TaskName" value=""/></li>
-        <li><label>TaskType:</label><input type="text" id="TaskType" value=""/></li>
-        <li><label>TaskCount:</label><input type="text" id="TaskCount" value=""/></li>
-        <li><label>TaskState:</label><input type="text" id="TaskState" value=""/></li>
-        <li><label>DeviceType:</label><input type="text" id="DeviceType" value=""/></li>
-        <li><label>Desc:</label><input type="text" id="Desc" value=""/></li>
-        <li><label>CreateTime:</label><input type="text" id="CreateTime" value=""/></li>
-        <li><label>UpdateTime:</label><input type="text" id="UpdateTime" value=""/></li>
-        <li><label>CreateWay:</label><input type="text" id="CreateWay" value=""/></li>
-        <li><input type="button" value="ok" onclick="closeNewTask()"></li>
-    </ul>
+        <form action="" method="post">
+            <ul id="newTask">
+                <li><label>TaskName:</label>{{ form.TaskName }}</li>
+                <li><label>TaskType:</label>{{ form.TaskType }}</li>
+                <li><label>TaskCount:</label>{{ form.TaskCount }}</li>
+                <li><label>TaskState:</label>{{ form.TaskState }}</li>
+                <li><label>DeviceType:</label>{{ form.DeviceType }}</li>
+                <li><label>Desc:</label>{{ form.Description }}</li>
+                <li><label>CreateTime:</label>{{ form.CreateTime }}</li>
+                <li><label>UpdateTime:</label>{{ form.UpdateTime }}</li>
+                <li><label>CreateWay:</label>{{ form.CreateWay }}</li>
+                <li><label>IsShared:</label>{{ form.IsShared }}</li>
+                <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
+            </ul>
+        </form>
+    </div>
 
-    <table cellpadding="0" cellspacing="0" border="0" width="80%">
+
+    <table cellpadding="0" cellspacing="0" border="0" width="900px">
         <tr>
             <th>no</th>
             <th>TaskName</th>
