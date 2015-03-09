@@ -44,12 +44,12 @@ class TestCase(models.Model):
 
 class Task(models.Model):
     TaskName = models.CharField(max_length=50)
-    TaskType = models.IntegerField(default=0)
+    TaskType = models.IntegerField(null=True)
     TaskCount = models.IntegerField()
     TaskState = models.IntegerField()
     Creator = models.ForeignKey(AppUser)
     DeviceType = models.CharField(max_length=50)
-    Description = models.TextField(blank=True)
+    Description = models.TextField(null=True,blank=True)
     CreateTime = models.DateTimeField()
     UpdateTime = models.DateTimeField()
     CreateWay = models.CharField(max_length=50)
