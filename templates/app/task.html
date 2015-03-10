@@ -16,7 +16,7 @@
         #newTask {
             width: 600px;
             border: #cccccc 1px solid;
-            padding: 10px 0 10px 30px;
+            padding: 10px;
             background-color: #eeeeee;
             position: absolute;
             display: none;
@@ -65,8 +65,8 @@
                     <label>DeviceType:</label>{{ form.DeviceType }}</li>
                 <li><label>CreateWay:</label>{{ form.CreateWay }}
                     <label>IsShared:</label>{{ form.IsShared }}</li>
-                <li><label>CreateTime:</label>{{ form.CreateTime }}</li>
-                <li><label>UpdateTime:</label>{{ form.UpdateTime }}</li>
+                <li><label>CreateTime:</label>{{ form.CreateTime }}
+                    <label>UpdateTime:</label>{{ form.UpdateTime }}</li>
                 <li><label>Desc:</label>{{ form.Description }}</li>
                 <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
             </ul>
