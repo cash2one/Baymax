@@ -1,0 +1,14 @@
+<uwsgi>
+    <socket>127.0.0.1:9001</socket>
+    <processes>8</processes>
+    <chdir>/home/web/TestManager</chdir>
+    <pythonpath>..</pythonpath>
+    <module>wsgi</module>
+    <profiler>true</profiler>
+    <memory-report>true</memory-report>
+    <enable-threads>true</enable-threads>
+    <logdate>true</logdate>
+    <limit-as>6048</limit-as>
+    <daemonize>/home/web/TestManager/log/django.log</daemonize>
+</uwsgi>
+
