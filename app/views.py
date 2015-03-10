@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from django import forms
+from .forms import TaskForm
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, AppUser
@@ -18,19 +18,6 @@ def about(request):
     # tasks = Task.objects.all()
     # return render_to_response("resp.html", {"tasks": tasks})
     return render(request, 'app/about.html', context_instance=RequestContext(request))
-
-
-class TaskForm(forms.Form):
-    TaskName = forms.CharField(max_length=50)
-    TaskType = forms.CharField(label='0')
-    TaskCount = forms.CharField()
-    TaskState = forms.CharField()
-    DeviceType = forms.CharField(max_length=50)
-    Description = forms.CharField(widget=forms.Textarea)
-    CreateTime = forms.DateTimeField()
-    UpdateTime = forms.DateTimeField()
-    CreateWay = forms.CharField(max_length=50)
-    IsShared = forms.BooleanField(required=False)
 
 
 def task(request):
