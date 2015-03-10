@@ -28,7 +28,7 @@ class TaskForm(forms.Form):
     CreateTime = forms.DateTimeField()
     UpdateTime = forms.DateTimeField()
     CreateWay = forms.CharField(max_length=50)
-    IsShared = forms.BooleanField()
+    IsShared = forms.BooleanField(required=False)
 
 
 def task(request):
@@ -49,7 +49,7 @@ def task(request):
             createTime = cd['CreateTime']
             updateTime = cd['UpdateTime']
             createWay = cd['CreateWay']
-            isShared = 1#cd['']
+            isShared = cd['IsShared']
             task = Task(TaskName=task_name, TaskType=task_Type, TaskCount=task_Count, TaskState=task_State,
                         Creator=creator, DeviceType=deviceType, Description=description, CreateTime=createTime, UpdateTime=updateTime, CreateWay=createWay,
                         IsShared=isShared)
