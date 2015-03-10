@@ -22,9 +22,9 @@ PATH = lambda p: os.path.abspath(
 SECRET_KEY = '17m=07^_r35j4&qoyc$i0!*n)2nmtui4v7)br3e77th4jm^%9t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'testmanager',
         'USER': 'root',
         'PASSWORD': 'root2158',
-        'HOST': '115.29.200.189',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
