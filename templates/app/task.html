@@ -24,9 +24,7 @@
         }
 
         #newTask li {
-            width:290px;
-            padding: 3px;
-            float:left;
+            padding: 2px;
         }
 
         #newTask label {
@@ -61,14 +59,14 @@
             {% csrf_token %}
             <ul id="newTask">
                 <li><label>TaskName:</label>{{ form.TaskName }}</li>
-                <li><label>TaskType:</label>{{ form.TaskType }}</li>
-                <li><label>TaskCount:</label>{{ form.TaskCount }}</li>
-                <li><label>TaskState:</label>{{ form.TaskState }}</li>
-                <li><label>DeviceType:</label>{{ form.DeviceType }}</li>
+                <li><label>TaskType:</label>{{ form.TaskType }}
+                    <label>TaskCount:</label>{{ form.TaskCount }}</li>
+                <li><label>TaskState:</label>{{ form.TaskState }}
+                    <label>DeviceType:</label>{{ form.DeviceType }}</li>
+                <li><label>CreateWay:</label>{{ form.CreateWay }}
+                    <label>IsShared:</label>{{ form.IsShared }}</li>
                 <li><label>CreateTime:</label>{{ form.CreateTime }}</li>
                 <li><label>UpdateTime:</label>{{ form.UpdateTime }}</li>
-                <li><label>CreateWay:</label>{{ form.CreateWay }}</li>
-                <li><label>IsShared:</label>{{ form.IsShared }}</li>
                 <li><label>Desc:</label>{{ form.Description }}</li>
                 <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
             </ul>
