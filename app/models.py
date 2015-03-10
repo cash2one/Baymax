@@ -53,7 +53,7 @@ class Task(models.Model):
     CreateTime = models.DateTimeField()
     UpdateTime = models.DateTimeField()
     CreateWay = models.CharField(max_length=50)
-    IsShared = models.BooleanField(default=False)
+    IsShared = models.BooleanField(default=1)
 
 
 class Result(models.Model):

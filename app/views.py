@@ -49,7 +49,7 @@ def task(request):
             createTime = cd['CreateTime']
             updateTime = cd['UpdateTime']
             createWay = cd['CreateWay']
-            isShared = True#cd['']
+            isShared = 1#cd['']
             task = Task(TaskName=task_name, TaskType=task_Type, TaskCount=task_Count, TaskState=task_State,
                         Creator=creator, DeviceType=deviceType, Description=description, CreateTime=createTime, UpdateTime=updateTime, CreateWay=createWay,
                         IsShared=isShared)
