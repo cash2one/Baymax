@@ -52,6 +52,7 @@
         <input type="button" value="add task" onclick="addTask()"/>
 
         <form action="" method="post">
+            {% csrf_token %}
             <ul id="newTask">
                 <li><label>TaskName:</label>{{ form.TaskName }}</li>
                 <li><label>TaskType:</label>{{ form.TaskType }}</li>
