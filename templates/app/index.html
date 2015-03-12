@@ -1,5 +1,15 @@
 {% extends "base.html" %}
+{% block js %}
+    <script src="{{ STATIC_URL }}js/socket.io.js"></script>
+    <script src="{{ STATIC_URL }}js/chat.js"></script>
+{% endblock %}
+
 {% block content %}
-    <div class="ddd">index</div>
+    <h1>Simple chat room</h1>
+    <div>
+        <span id="status">Connecting...</span>
+        <input type="text" id="input"/>
+    </div>
+    <div id="content"></div>
 {% endblock %}
 

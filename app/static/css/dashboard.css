@@ -5,6 +5,53 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
+    background-color: #ffffff;
+    font: normal normal 13px "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", Verdana, Lucida, Arial, Helvetica;
+}
+
+.task_action {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.task_action li {
+    list-style: none;
+    padding: 0 0 0 5px;
+    float: left;
+}
+
+#newTask {
+    width: 620px;
+    border: #cccccc 1px solid;
+    padding: 10px;
+    background-color: #eeeeee;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -300px;
+    display: none;
+    text-align: left;
+    z-index: 10001;
+}
+
+#newTask li {
+    padding: 2px;
+}
+
+#newTask label {
+    width: 100px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+#btnAddTask {
+    width: 150px;
+    height: 30px;
+    background-color: #eee;
+    border: 0;
+    font-size: 13px;
+    float: right;
 }
 
 .mask {
