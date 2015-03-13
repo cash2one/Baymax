@@ -13,7 +13,27 @@
 {% endblock %}
 
 {% block page_action %}
-        <li><a href="#" id="btnAddTask">Add Task</a></li>
+        <li><a href="#" id="btnAddTask">Add Task</a>
+    <div id="newTask">
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <ul>
+                <li><label>任务名称:</label>{{ form.TaskName }}</li>
+                <li><label>类型:</label>{{ form.TaskType }}</li>
+                    <li><label>执行数:</label>{{ form.TaskCount }}</li>
+                <li><label>状态:</label>{{ form.TaskState }}</li>
+                    <li><label>设备类型:</label>{{ form.DeviceType }}</li>
+                <li><label>创建方式:</label>{{ form.CreateWay }}</li>
+                    <li><label>是否共享:</label>{{ form.IsShared }}</li>
+                <li><label>创建时间:</label>{{ form.CreateTime }}</li>
+                    <li><label>更新时间:</label>{{ form.UpdateTime }}</li>
+                <li><label>备注:</label>{{ form.Description }}</li>
+                <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
+            </ul>
+        </form>
+    </div>
+        </li>
         <li style="border-right:#267bc8 1px solid"><a href="#">Push Message</a></li>
 {% endblock %}
 
@@ -21,26 +41,6 @@
     <h1 class="page-header">
         Task
     </h1>
-
-    <div id="newTask">
-
-        <form action="" method="post">
-            {% csrf_token %}
-            <ul>
-                <li><label>TaskName:</label>{{ form.TaskName }}</li>
-                <li><label>TaskType:</label>{{ form.TaskType }}
-                    <label>TaskCount:</label>{{ form.TaskCount }}</li>
-                <li><label>TaskState:</label>{{ form.TaskState }}
-                    <label>DeviceType:</label>{{ form.DeviceType }}</li>
-                <li><label>CreateWay:</label>{{ form.CreateWay }}
-                    <label>IsShared:</label>{{ form.IsShared }}</li>
-                <li><label>CreateTime:</label>{{ form.CreateTime }}
-                    <label>UpdateTime:</label>{{ form.UpdateTime }}</li>
-                <li><label>Desc:</label>{{ form.Description }}</li>
-                <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
-            </ul>
-        </form>
-    </div>
 
     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
         <tr>

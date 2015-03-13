@@ -28,21 +28,27 @@ body {
 }
 
 #newTask {
-    width: 620px;
-    border: #cccccc 1px solid;
-    padding: 10px;
-    background-color: #eeeeee;
+    width: 400px;
+    border: #ddd 1px solid;
+    border-top:none;
+    padding: 10px 0 10px 10px;
+    background-color: #fff;
     position: absolute;
-    left: 50%;
-    margin: 0 0 0 -300px;
+    box-shadow: 0 3px 3px #cccccc;
+    left: 0;
+    top:50px;
     display: none;
     text-align: left;
     z-index: 10001;
 }
 
 #newTask li {
+    list-style: none;
+
     padding: 2px;
 }
+
+#newTask li label{font-weight: normal;}
 
 #newTask label {
     width: 100px;
