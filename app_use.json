@@ -1,0 +1,24 @@
+[
+  {
+    "fields": {
+      "UserName": "aa",
+      "UserPassword": "cc",
+      "DisplayName": "bb",
+      "Email": "dd",
+      "UserDefined": "ee"
+    },
+    "model": "app.appuser",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "UserName": "faa",
+      "UserPassword": "cc",
+      "DisplayName": "bb",
+      "Email": "dd",
+      "UserDefined": "ee"
+    },
+    "model": "app.appuser",
+    "pk": 2
+  }
+]
