@@ -9,12 +9,11 @@
             overflow: auto;
             margin: 0;
             padding: 0;
-            width: 100%;
         }
 
         .page {
-            height: 300px;
-            width: 100%;
+            overflow: auto;
+            position: relative;
         }
 
         /* Login Page */
@@ -23,13 +22,8 @@
         }
 
         .login.page .form {
-            height: 100px;
-            margin-top: -100px;
-            position: absolute;
-
             text-align: center;
-            top: 50%;
-            width: 100%;
+            width: auto;
         }
 
         .login.page .form .usernameInput {
@@ -39,8 +33,6 @@
         .login.page .title {
             font-size: 200%;
         }
-
-
 
         /* Chat page */
 
@@ -68,18 +60,17 @@
         /* Messages */
 
         .chatArea {
-            height: 100%;
             padding-bottom: 60px;
         }
 
         .messages {
-            height: 100%;
             margin: 0;
-            overflow-y: scroll;
             padding: 10px 20px 10px 20px;
         }
 
-        .messages li{list-style: none;}
+        .messages li {
+            list-style: none;
+        }
 
         .message.typing .messageBody {
             color: gray;
@@ -96,28 +87,28 @@
         /* Input */
 
         .inputMessage {
-            bottom: 0;
-            height: 40px;
-            left: 0;
+            height: 35px;
+            width: 99%;
             position: absolute;
-            width: 95%;
+            left: 0;
+            bottom:10px;
         }
 
     </style>
 {% endblock %}
 
 {% block content %}
-        <div class="chat page">
-            <div class="chatArea">
-                <ul class="messages"></ul>
-            </div>
-            <input class="inputMessage" placeholder="Type here..."/>
+    <div class="chat page">
+        <div class="chatArea">
+            <ul class="messages"></ul>
         </div>
-        <div class="login page">
-            <div class="form">
-                <h3 class="title">nickname</h3>
-                <input class="usernameInput" type="text" maxlength="14"/>
-            </div>
+        <input class="inputMessage" placeholder="Type here..."/>
+    </div>
+    <div class="login page">
+        <div class="form">
+            <h3 class="title">nickname</h3>
+            <input class="usernameInput" type="text" maxlength="14"/>
         </div>
+    </div>
 {% endblock %}
 

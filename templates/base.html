@@ -7,6 +7,7 @@
     </title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/dashboard.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery213.js"></script>
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
@@ -44,16 +45,13 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#">Task <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">TestCase</a></li>
-                <li><a href="#">Module</a></li>
-                <li><a href="#">Share</a></li>
+                <li><a href="#"><span class="icon-tasks"></span>Task</a></li>
+                <li><a href="#"><span class="icon-coffee"></span>TestCase</a></li>
+                <li><a href="#"><span class="icon-briefcase"></span>Module</a></li>
+                <li><a href="#"><span class="icon-paste"></span>Result</a></li>
+                <li><a href="#"><span class="icon-desktop"></span>Share</a></li>
             </ul>
 
-            <ul class="nav nav-sidebar">
-                <li><a href="">Nav item again</a></li>
-                <li><a href="">One more nav</a></li>
-            </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <!--h1 class="page-header">Dashboard</h1-->

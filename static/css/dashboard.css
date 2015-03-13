@@ -87,6 +87,10 @@ body {
     background-color: #f3f3f3 !important;
 }
 
+.navbar-brand {
+    color: #ffffff !important;
+}
+
 .navbar-inverse .navbar-nav > li > a:link {
     color: #ffffff;
 }
@@ -133,6 +137,11 @@ body {
     margin-right: -21px; /* 20px padding + 1px border */
     margin-bottom: 20px;
     margin-left: -20px;
+    font-size: 13px;
+}
+
+.nav-sidebar span {
+    padding: 0 6px 0 0;
 }
 
 .nav-sidebar > li > a {
