@@ -9,6 +9,12 @@ body {
     font: normal normal 13px "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", Verdana, Lucida, Arial, Helvetica;
 }
 
+.form-control {
+    border-radius: 2px;
+    height: 26px;
+    margin-top: 5px;
+}
+
 .task_action {
     margin: 0;
     padding: 0;
@@ -43,15 +49,6 @@ body {
     display: inline-block;
     *display: inline;
     *zoom: 1;
-}
-
-#btnAddTask {
-    width: 150px;
-    height: 30px;
-    background-color: #eee;
-    border: 0;
-    font-size: 13px;
-    float: right;
 }
 
 .mask {

@@ -11,14 +11,17 @@
 
     </script>
 {% endblock %}
+
+{% block page_action %}
+        <li><a href="#" id="btnAddTask">Add Task</a></li>
+        <li style="border-right:#267bc8 1px solid"><a href="#">Push Message</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="page-header">
         Task
     </h1>
-    <ul class="task_action">
-        <li><input type="button" id="btnAddTask" value="新增任务"/></li>
-        <li><input type="button" id="btnAddTask" value="推送任务"/></li>
-    </ul>
+
     <div id="newTask">
 
         <form action="" method="post">
