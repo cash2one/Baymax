@@ -13,28 +13,29 @@
 {% endblock %}
 
 {% block page_action %}
-        <li><a href="#" id="btnAddTask">Add Task</a>
-    <div id="newTask">
+    <li><a href="#" id="btnAddTask">Add Task</a>
 
-        <form action="" method="post">
-            {% csrf_token %}
-            <ul>
-                <li><label>任务名称:</label>{{ form.TaskName }}</li>
-                <li><label>类型:</label>{{ form.TaskType }}</li>
+        <div id="newTask">
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <ul>
+                    <li><label>任务名称:</label>{{ form.TaskName }}</li>
+                    <li><label>类型:</label>{{ form.TaskType }}</li>
                     <li><label>执行数:</label>{{ form.TaskCount }}</li>
-                <li><label>状态:</label>{{ form.TaskState }}</li>
+                    <li><label>状态:</label>{{ form.TaskState }}</li>
                     <li><label>设备类型:</label>{{ form.DeviceType }}</li>
-                <li><label>创建方式:</label>{{ form.CreateWay }}</li>
+                    <li><label>创建方式:</label>{{ form.CreateWay }}</li>
                     <li><label>是否共享:</label>{{ form.IsShared }}</li>
-                <li><label>创建时间:</label>{{ form.CreateTime }}</li>
+                    <li><label>创建时间:</label>{{ form.CreateTime }}</li>
                     <li><label>更新时间:</label>{{ form.UpdateTime }}</li>
-                <li><label>备注:</label>{{ form.Description }}</li>
-                <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
-            </ul>
-        </form>
-    </div>
-        </li>
-        <li style="border-right:#267bc8 1px solid"><a href="#">Push Message</a></li>
+                    <li><label>备注:</label>{{ form.Description }}</li>
+                    <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
+                </ul>
+            </form>
+        </div>
+    </li>
+    <li style="border-right:#267bc8 1px solid"><a href="#">Push Message</a></li>
 {% endblock %}
 
 {% block content %}

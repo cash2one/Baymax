@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
+{% block page_action %}
+    <li><a href="#">Add TestCase</a></li>
+    <li style="border-right:#267bc8 1px solid"><a href="#">Del TestCase</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="page-header">
         TestCase
     </h1>
-
 
     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
         <tr>
