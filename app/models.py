@@ -23,7 +23,7 @@ class DeviceModule(models.Model):
     IsEnable = models.BooleanField(default=True)
     CreateTime = models.DateTimeField(null=True)
     UpdateTime = models.DateTimeField(null=True)
-    Description = models.TextField(blank=True)
+    Description = models.TextField(null=True,blank=True)
 
 
 class TestCase(models.Model):

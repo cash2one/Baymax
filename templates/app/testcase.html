@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-header">
+        TestCase
+    </h1>
+
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+        <tr>
+            <th><input type="checkbox"/></th>
+            <th>序号</th>
+            <th>用例名称</th>
+            <th>执行次数</th>
+            <th>状态</th>
+            <th>并行</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>备注</th>
+        </tr>
+        {% for case in testcase %}
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>{{ case.id }}</td>
+                <td>{{ case.DisplayName }}</td>
+                <td>{{ case.ExecuteCount }}</td>
+                <td>{{ case.IsEnable }}</td>
+                <td>{{ case.AloneUse }}</td>
+                <td>{{ case.CreateTime }}</td>
+                <td>{{ case.UpdateTime }}</td>
+                <td>{{ case.Description }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

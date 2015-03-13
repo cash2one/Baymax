@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from .forms import TaskForm
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from .models import Task, AppUser
+from .models import Task,TestCase, AppUser, DeviceModule
 
 
 def index(request):
@@ -50,3 +50,12 @@ def task(request):
     else:
         form = TaskForm()
     return render_to_response('app/task.html', {'tasks': tasks, 'form': form}, context_instance=RequestContext(request))
+
+
+def device_module(request):
+    devices = DeviceModule.objects.all()
+    return render_to_response("app/device.html", {"devices": devices}, context_instance=RequestContext(request))
+
+def test_case(request):
+    cases = TestCase.objects.all()
+    return render_to_response("app/testcase.html", {"testcase": cases}, context_instance=RequestContext(request))

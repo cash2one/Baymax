@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="page-header">
+        Device Module
+    </h1>
+
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+        <tr>
+            <th><input type="checkbox"/></th>
+            <th>序号</th>
+            <th>模块名称</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>备注</th>
+        </tr>
+        {% for device in devices %}
+            <tr>
+                <td><input type="checkbox"/></td>
+                <td>{{ device.id }}</td>
+                <td>{{ device.DisplayName }}</td>
+                <td>{{ device.IsEnable }}</td>
+                <td>{{ device.CreateTime }}</td>
+                <td>{{ device.UpdateTime }}</td>
+                <td>{{ device.Description }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

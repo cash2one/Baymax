@@ -1,0 +1,134 @@
+[
+  {
+    "pk": 1,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "media",
+      "DisplayName": "多媒体",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "多媒体模块测试用例集合"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "battery",
+      "DisplayName": "电池",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "battery模块测试用例集合"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "storage",
+      "DisplayName": "存储",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "storage模块测试用例集合"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "framework",
+      "DisplayName": "Framework",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "Framework模块测试用例集合"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "mobile",
+      "DisplayName": "移动网络",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "mobile模块测试用例集合"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "camera",
+      "DisplayName": "相机",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "camera模块测试用例集合"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "gps",
+      "DisplayName": "GPS",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "gps模块测试用例集合"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "wifi",
+      "DisplayName": "WIFI",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "wifi模块测试用例集合"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "telphone",
+      "DisplayName": "电话",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "telphone模块测试用例集合"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "bluetooth",
+      "DisplayName": "蓝牙",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "bluetooth模块测试用例集合"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "app.DeviceModule",
+    "fields": {
+      "ModuleName": "mms",
+      "DisplayName": "彩信",
+      "IsEnable": true,
+      "CreateTime": null,
+      "UpdateTime": null,
+      "Description": "mms模块测试用例集合"
+    }
+  }
+]
