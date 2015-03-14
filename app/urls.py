@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^task/', 'app.views.task'),
     url(r'^testcase/', 'app.views.test_case'),
     url(r'^device/', 'app.views.device_module'),
+    url(r'^login/', 'app.views.login'),
 
 )

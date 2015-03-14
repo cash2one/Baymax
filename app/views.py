@@ -2,16 +2,37 @@ from django.shortcuts import render
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from .forms import TaskForm
+from django.contrib import auth
+from .forms import TaskForm, LoginForm
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from .models import Task,TestCase, AppUser, DeviceModule
+from .models import Task, TestCase, AppUser, DeviceModule
 
 
 def index(request):
     tasks = Task.objects.all()
     return render_to_response("app/index.html", {"tasks": tasks}, context_instance=RequestContext(request))
     # return render(request,'index.html')
+
+
+def login(request):
+    if request.method == 'GET':
+        form = LoginForm()
+        return render_to_response('app/login.html', RequestContext(request, {'form': form, }))
+    else:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            user = auth.authenticate(username=username, password=password)
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                return render_to_response('app/index.html', RequestContext(request))
+            else:
+                return render_to_response('app/login.html',
+                                          RequestContext(request, {'form': form, 'password_is_wrong': True}))
+        else:
+            return render_to_response('app/login.html', RequestContext(request, {'form': form, }))
 
 
 def about(request):
@@ -55,6 +76,7 @@ def task(request):
 def device_module(request):
     devices = DeviceModule.objects.all()
     return render_to_response("app/device.html", {"devices": devices}, context_instance=RequestContext(request))
+
 
 def test_case(request):
     cases = TestCase.objects.all()
