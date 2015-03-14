@@ -34,6 +34,9 @@ def login(request):
         else:
             return render_to_response('app/login.html', RequestContext(request, {'form': form, }))
 
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/accounts/login/")
 
 def about(request):
     # tasks = Task.objects.all()
