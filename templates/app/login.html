@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     {% if password_is_wrong %}
         <div class="alert alert-error">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -12,7 +8,7 @@
         </div>
     {% endif %}
     <div class="well">
-        <h1>数据库脚本发布系统</h1>
+        <h1>TouchStone</h1>
         <p> </p>
         <form class="form-horizontal" action="" method="post">
             {% csrf_token %}
@@ -24,6 +20,4 @@
             </p>
         </form>
     </div>
-</body>
-</html>
-
+{% endblock %}
