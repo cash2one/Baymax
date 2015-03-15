@@ -7,8 +7,9 @@ from .forms import TaskForm, LoginForm
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, TestCase, AppUser, DeviceModule
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url="/app/login/")
 def index(request):
     tasks = Task.objects.all()
     return render_to_response("app/index.html", {"tasks": tasks}, context_instance=RequestContext(request))
@@ -38,12 +39,15 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect("/accounts/login/")
 
+
+@login_required(login_url="/app/login/")
 def about(request):
     # tasks = Task.objects.all()
     # return render_to_response("resp.html", {"tasks": tasks})
     return render(request, 'app/about.html', context_instance=RequestContext(request))
 
 
+@login_required(login_url="/app/login/")
 def task(request):
     tasks = Task.objects.all()
     # return render_to_response("app/task.html", {"tasks": tasks},context_instance=RequestContext(request))
@@ -76,11 +80,13 @@ def task(request):
     return render_to_response('app/task.html', {'tasks': tasks, 'form': form}, context_instance=RequestContext(request))
 
 
+@login_required(login_url="/app/login/")
 def device_module(request):
     devices = DeviceModule.objects.all()
     return render_to_response("app/device.html", {"devices": devices}, context_instance=RequestContext(request))
 
 
+@login_required(login_url="/app/login/")
 def test_case(request):
     cases = TestCase.objects.all()
     return render_to_response("app/testcase.html", {"testcase": cases}, context_instance=RequestContext(request))
