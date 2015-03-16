@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, TestCase, AppUser, DeviceModule
 from django.contrib.auth.decorators import login_required
+import time
 
 @login_required(login_url="/app/login/")
 def index(request):
@@ -59,13 +60,13 @@ def task(request):
             task_name = cd['TaskName']
             task_Type = cd['TaskType']
             task_Count = cd['TaskCount']
-            task_State = cd['TaskState']
+            task_State = 1
             creator = AppUser.objects.get(id=1)
             deviceType = cd['DeviceType']
             description = cd['Description']
-            createTime = cd['CreateTime']
-            updateTime = cd['UpdateTime']
-            createWay = cd['CreateWay']
+            createTime = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+            updateTime = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+            createWay = 'web'
             isShared = cd['IsShared']
             task = Task(TaskName=task_name, TaskType=task_Type, TaskCount=task_Count, TaskState=task_State,
                         Creator=creator, DeviceType=deviceType, Description=description, CreateTime=createTime,

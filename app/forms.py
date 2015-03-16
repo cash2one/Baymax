@@ -5,15 +5,15 @@ from django import forms
 
 
 class TaskForm(forms.Form):
-    TaskName = forms.CharField(max_length=200)
-    TaskType = forms.CharField(label='0')
-    TaskCount = forms.CharField()
-    TaskState = forms.CharField()
-    DeviceType = forms.CharField(max_length=50)
-    Description = forms.CharField(widget=forms.Textarea)
-    CreateTime = forms.DateTimeField()
-    UpdateTime = forms.DateTimeField()
-    CreateWay = forms.CharField(max_length=50)
+    TaskName = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    TaskType = forms.CharField(label='0', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    TaskCount = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    TaskState = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    DeviceType = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    Description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control','rows':'3'}))
+    CreateTime = forms.DateTimeField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    UpdateTime = forms.DateTimeField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    CreateWay = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
     IsShared = forms.BooleanField(required=False)
 
 

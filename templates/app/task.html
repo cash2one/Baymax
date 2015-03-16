@@ -13,28 +13,62 @@
 {% endblock %}
 
 {% block page_action %}
-    <li><a href="#" id="btnAddTask">Add Task</a>
+    <li><a href="#" data-toggle="modal" data-target="#myModal">Add Task</a>
 
-        <div id="newTask">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add Task</h4>
+                    </div>
+                    <form action="" method="post">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="control-label">任务名称:</label>{{ form.TaskName }}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">类型:</label>{{ form.TaskType }}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">执行数:</label>{{ form.TaskCount }}
+                            </div>
+                            <!--div class="form-group">
+                                <label class="control-label">状态:</label>{{ form.TaskState }}
+                            </div-->
+                            <div class="form-group">
+                                <label class="control-label">设备类型:</label>{{ form.DeviceType }}
+                            </div>
+                            <!--div class="form-group">
+                                <label class="control-label">创建方式:</label>{{ form.CreateWay }}
+                            </div-->
+                            <div class="form-group">
+                                <label class="control-label">是否共享:</label>{{ form.IsShared }}
+                            </div>
+                            <!--class="form-group">
+                                <label class="control-label">创建时间:</label>{{ form.CreateTime }}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">更新时间:</label>{{ form.UpdateTime }}
+                            </div-->
+                            <div class="form-group">
+                                <label class="control-label">备注:</label>{{ form.Description }}
+                            </div>
 
-            <form action="" method="post">
-                {% csrf_token %}
-                <ul>
-                    <li><label>任务名称:</label>{{ form.TaskName }}</li>
-                    <li><label>类型:</label>{{ form.TaskType }}</li>
-                    <li><label>执行数:</label>{{ form.TaskCount }}</li>
-                    <li><label>状态:</label>{{ form.TaskState }}</li>
-                    <li><label>设备类型:</label>{{ form.DeviceType }}</li>
-                    <li><label>创建方式:</label>{{ form.CreateWay }}</li>
-                    <li><label>是否共享:</label>{{ form.IsShared }}</li>
-                    <li><label>创建时间:</label>{{ form.CreateTime }}</li>
-                    <li><label>更新时间:</label>{{ form.UpdateTime }}</li>
-                    <li><label>备注:</label>{{ form.Description }}</li>
-                    <li><input type="submit" value="ok" onclick="closeNewTask()"></li>
-                </ul>
-            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </li>
+
     <li style="border-right:#267bc8 1px solid"><a href="#">Push Message</a></li>
 {% endblock %}
 
