@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, TestCase, AppUser, DeviceModule
 from django.contrib.auth.decorators import login_required
-import time
+import time,urllib2,re
 
 @login_required(login_url="/app/login/")
 def index(request):
@@ -16,11 +16,19 @@ def index(request):
     return render_to_response("app/index.html", {"tasks": tasks}, context_instance=RequestContext(request))
     # return render(request,'index.html')
 
+def getBingImg(url):
+    re_img = re.compile(r'(?<=g_img=\{url:\').*?(?=.jpg)')
+    html = urllib2.urlopen(url).read()
+
+    match = re_img.search(html)
+    if match:
+        return match.group()+'.jpg'
 
 def login(request):
     if request.method == 'GET':
         form = LoginForm()
-        return render_to_response('app/login.html', RequestContext(request, {'form': form, }))
+        bingimg=getBingImg('http://cn.bing.com/')
+        return render_to_response('app/login.html', RequestContext(request, {'form': form,'bingimg':bingimg }))
     else:
         form = LoginForm(request.POST)
         if form.is_valid():
