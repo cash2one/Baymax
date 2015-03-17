@@ -25,7 +25,7 @@
     -webkit-filter: blur(10px); /* Chrome, Opera */
     -moz-filter: blur(10px);
     -ms-filter: blur(10px);
-    filter: blur(30px);
+    filter: blur(100px);
     opacity:0.3;
 }
 
