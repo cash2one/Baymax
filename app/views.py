@@ -46,7 +46,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect("/accounts/login/")
+    return HttpResponseRedirect("/app/login/")
 
 
 @login_required(login_url="/app/login/")
