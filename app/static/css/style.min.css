@@ -25,8 +25,8 @@
     -webkit-filter: blur(10px); /* Chrome, Opera */
     -moz-filter: blur(10px);
     -ms-filter: blur(10px);
-    filter: blur(15px);
-    opacity:0.6;
+    filter: blur(12px);
+    opacity:0.3;
 }
 
 .modal-content {
