@@ -43,20 +43,24 @@
     margin: 20px !important;
 }
 
+.box-gray {
+    border-top: #ff2121 2px solid;
+}
+
 .box-red {
-    border-top: #ff2121 3px solid;
+    border-top: #ff2121 2px solid;
 }
 
 .box-orange {
-    border-top: #ff9600 3px solid;
+    border-top: #ff9600 2px solid;
 }
 
 .box-green {
-    border-top: #00a65a 3px solid;
+    border-top: #00a65a 2px solid;
 }
 
 .box-blue {
-    border-top: #117deb 3px solid;
+    border-top: #117deb 2px solid;
 }
 
 .noMarginLeft {
