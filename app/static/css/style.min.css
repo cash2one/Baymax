@@ -11,8 +11,22 @@
 * You can find our other themes on: http://bootstrapmaster.com
 */
 
-.bing{width:100%;height:100%;background-position:center top;background-repeat:no-repeat;
-	position:fixed;left:0;top:0;z-index:-1000;}
+.bing {
+    width: 100%;
+    height: 100%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1000;
+
+    background-size: cover;
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
 
 .modal-content {
     border-radius: 3px;
