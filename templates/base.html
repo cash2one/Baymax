@@ -6,71 +6,238 @@
         TestManager {% block title %}{% endblock %}
     </title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/dashboard.css">
+    <!--link rel="stylesheet" href="{{ STATIC_URL }}css/dashboard.css"-->
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.min.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery213.js"></script>
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" style="width:300px;">TestManager</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+<header class="navbar">
+    <div class="container">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"></i></a>
+        <a class="navbar-brand col-lg-2 col-sm-1 col-xs-12" href="index.html"><span>TestManager</span></a>
+
+        <!-- start: Header Menu -->
+        <div class="nav-no-collapse header-nav">
+            <ul class="nav navbar-nav pull-right">
                 {% block page_action %}{% endblock %}
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
+                <li class="dropdown hidden-xs">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="charts-flot.html#">
+                        <i class="fa fa-warning"></i>
+                    </a>
+                    <ul class="dropdown-menu notifications">
+                        <li class="dropdown-menu-title">
+                            <span>You have 11 notifications</span>
+                        </li>
+                        <li>
+                            <a href="charts-flot.html#">
+                                <span class="icon blue"><i class="fa fa-user"></i></span>
+                                <span class="message">New user registration</span>
+                                <span class="time">1 min</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-flot.html#">
+                                <span class="icon blue"><i class="fa fa-user"></i></span>
+                                <span class="message">New user registration</span>
+                                <span class="time">yesterday</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-sub-footer">
+                            <a>View all notifications</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- start: Message Dropdown -->
+                <li class="dropdown hidden-xs">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="charts-flot.html#">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                    <ul class="dropdown-menu messages">
+                        <li>
+                            <span class="dropdown-menu-title">You have 9 messages</span>
+                        </li>
+                        <li>
+                            <a href="charts-flot.html#">
+                                <span class="avatar"><img src="{{ STATIC_URL }}img/avatar3.jpg" alt="Avatar"></span>
+									<span class="header">
+										<span class="from">
+									    	Kate Ross
+									     </span>
+										<span class="time">
+									    	3 hours
+									    </span>
+									</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-flot.html#">
+                                <span class="avatar"><img src="{{ STATIC_URL }}img/avatar4.jpg" alt="Avatar"></span>
+									<span class="header">
+										<span class="from">
+									    	Julie Blank
+									     </span>
+										<span class="time">
+									    	yesterday
+									    </span>
+									</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-menu-sub-footer">View all messages</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- start: User Dropdown -->
+                <li class="dropdown">
+                    <a class="btn account dropdown-toggle" data-toggle="dropdown" href="charts-flot.html#">
+                        <div class="avatar"><img src="{{ STATIC_URL }}img/avatar.jpg" alt="Avatar"></div>
+                        <div class="user">
+                            <span class="hello">Welcome!</span>
+                            <span class="name">Administrator</span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-menu-title">
+
+                        </li>
+                        <li><a href="charts-flot.html#"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="charts-flot.html#"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="charts-flot.html#"><i class="fa fa-envelope"></i> Messages</a></li>
+                        <li><a href="login.html"><i class="fa fa-off"></i> Logout</a></li>
+                    </ul>
+                </li>
+                <!-- end: User Dropdown -->
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
+        <!-- end: Header Menu -->
+
     </div>
-</nav>
+</header>
+<!-- end: Header -->
 
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="/app/task/"><i class="fa fa-tasks"></i>&nbsp; Task
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="/app/testcase/"><i class="fa fa-coffee"></i>&nbsp; TestCase
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="/app/device/"><i class="fa fa-briefcase"></i>&nbsp; Module
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="#"><i class="fa fa-paste"></i>&nbsp; Result
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="#"><i class="fa fa-desktop"></i>&nbsp; Share
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="#"><i class="fa fa-pie-chart"></i>&nbsp; Charts
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
-                <li><a href="#"><i class="fa fa-book"></i>&nbsp; Documentation
-                    <i class="fa fa-angle-right pull-right"></i>
-                </a></li>
+        <!-- start: Main Menu -->
+        <div id="sidebar-left" class="col-lg-2 col-sm-1" style="min-height: 875px; display: block;">
 
-            </ul>
+            <!--input type="text" class="search hidden-sm" placeholder="..."-->
 
+            <div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav nav-tabs nav-stacked main-menu">
+                    <li>
+                        <a href="/app/task/">
+                            <i class="fa fa-tasks"></i> <span>Task</span>
+                            <small class="label pull-right bg-red">3</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            <i class="fa fa-coffee"></i>
+                            <span>TestCase</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <ul class="list-group">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Web</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Android</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> iOS</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Device</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
+                           aria-controls="collapseTwo">
+                            <i class="fa fa-briefcase"></i> <span>Module</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
+                            <ul class="list-group">
+                                <li><a href="/app/device/"><i class="fa fa-circle-o"></i> Web</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Android</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> iOS</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Device</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-paste"></i> <span>Result</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Share</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i> <span>Charts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>Documentation</span>
+                            <small class="label pull-right bg-green">5</small>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <!-- end: Main Menu -->
+
+        <!--div id="sidebar-left" class="col-lg-2 col-sm-1">
+        <ul class="nav nav-sidebar">
+            <li><a href="/app/task/"><i class="fa fa-tasks"></i>&nbsp; Task
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="/app/testcase/"><i class="fa fa-coffee"></i>&nbsp; TestCase
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="/app/device/"><i class="fa fa-briefcase"></i>&nbsp; Module
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="#"><i class="fa fa-paste"></i>&nbsp; Result
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="#"><i class="fa fa-desktop"></i>&nbsp; Share
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="#"><i class="fa fa-pie-chart"></i>&nbsp; Charts
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+            <li><a href="#"><i class="fa fa-book"></i>&nbsp; Documentation
+                <i class="fa fa-angle-right pull-right"></i>
+            </a></li>
+
+        </ul>
+
+    </div-->
+        <div id="content" class="col-lg-10 col-sm-11">
             <!--h1 class="page-header">Dashboard</h1-->
             <!--h2 class="sub-header">Section title</h2-->
 

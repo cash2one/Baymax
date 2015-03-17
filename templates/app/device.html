@@ -1,37 +1,39 @@
 {% extends "base.html" %}
 
-{% block page_action %}
-    <li><a href="#">Add Module</a></li>
-    <li style="border-right:#267bc8 1px solid"><a href="#">Del Module</a></li>
-{% endblock %}
-
 {% block content %}
-    <h1 class="page-header">
-        Device Module
-    </h1>
 
+    <div class="box box-orange">
+        <div class="box-header" data-original-title="">
+            <h2><i class="fa fa-tasks"></i><span class="break"></span>Device Module</h2>
 
-    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
-        <tr>
-            <th><input type="checkbox"/></th>
-            <th>序号</th>
-            <th>模块名称</th>
-            <th>状态</th>
-            <th>创建时间</th>
-            <th>更新时间</th>
-            <th>备注</th>
-        </tr>
-        {% for device in devices %}
+            <div class="box-icon">
+                <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>add
+                    module</a>
+                <a href="#"><i class="fa fa-chevron-up"></i>del module</a>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
             <tr>
-                <td><input type="checkbox"/></td>
-                <td>{{ device.id }}</td>
-                <td>{{ device.DisplayName }}</td>
-                <td>{{ device.IsEnable }}</td>
-                <td>{{ device.CreateTime }}</td>
-                <td>{{ device.UpdateTime }}</td>
-                <td>{{ device.Description }}</td>
+                <th><input type="checkbox"/></th>
+                <th>序号</th>
+                <th>模块名称</th>
+                <th>状态</th>
+                <th>创建时间</th>
+                <th>更新时间</th>
+                <th>备注</th>
             </tr>
-        {% endfor %}
+            {% for device in devices %}
+                <tr>
+                    <td><input type="checkbox"/></td>
+                    <td>{{ device.id }}</td>
+                    <td>{{ device.DisplayName }}</td>
+                    <td>{{ device.IsEnable }}</td>
+                    <td>{{ device.CreateTime }}</td>
+                    <td>{{ device.UpdateTime }}</td>
+                    <td>{{ device.Description }}</td>
+                </tr>
+            {% endfor %}
 
-    </table>
+        </table>
+    </div>
 {% endblock %}

@@ -2,6 +2,8 @@
 {% block js %}
     <script src="{{ STATIC_URL }}js/socket.io.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
+    <script src="{{ STATIC_URL }}js/Chart.min.js"></script>
+
 {% endblock %}
 {% block css %}
     <style>
@@ -91,7 +93,7 @@
             width: 99%;
             position: absolute;
             left: 0;
-            bottom:10px;
+            bottom: 10px;
         }
 
     </style>
@@ -110,5 +112,104 @@
             <input class="usernameInput" type="text" maxlength="14"/>
         </div>
     </div>
+
+
+    <div style="width:auto;height:400px;" class="box">
+        <div style="width:600px;height:400px;float:left;">
+            <canvas id="canvas" height="400" width="600"></canvas>
+        </div>
+
+
+        <div id="canvas-holder" style="width:220px;height:220px;float:left;">
+            <canvas id="chart-area" width="220" height="220"></canvas>
+        </div>
+    </div>
+
+    <script>
+        var randomScalingFactor = function () {
+            return Math.round(Math.random() * 100)
+        };
+        var lineChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#e14500",
+                    pointHighlightFill: "#e14500",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                }
+            ]
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myLine = new Chart(ctx).Line(lineChartData, {
+                responsive: true
+            });
+        }
+    </script>
+
+
+
+
+    <script>
+
+        var doughnutData = [
+            {
+                value: 300,
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "Red"
+            },
+            {
+                value: 50,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Green"
+            },
+            {
+                value: 100,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "Yellow"
+            },
+            {
+                value: 40,
+                color: "#949FB1",
+                highlight: "#A8B3C5",
+                label: "Grey"
+            },
+            {
+                value: 120,
+                color: "#4D5360",
+                highlight: "#616774",
+                label: "Dark Grey"
+            }
+
+        ];
+
+        window.onload = function () {
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive: true});
+        };
+
+
+    </script>
+
+
+
 {% endblock %}
 
