@@ -25,7 +25,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'placeholder': u"用户名",
-                'class': 'input-large col-xs-12'
+                'class': 'input-large col-xs-12',
             }
         ),
     )
@@ -36,7 +36,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': u"密码",
-                'class': 'input-large col-xs-12'
+                'class': 'input-large col-xs-12',
             }
         ),
     )
