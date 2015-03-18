@@ -22,8 +22,16 @@
     z-index: -1000;
 
     background-size: cover;
-    blur:100px;
+
     opacity:0.2;
+
+}
+
+.temp-logo{font-size: 22px;color:#ffffff;padding:0 2px 0 0;}
+
+.fixed-top {
+    position: fixed;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
 }
 
 .modal-content {
@@ -47,14 +55,7 @@
     color: #fff !important;
 }
 
-.box {
-    width: auto;
-    overflow: auto;
-    border-radius: 3px;
-    background-color: #ffffff;
-    padding: 10px;
-    margin: 20px !important;
-}
+
 
 .box-gray {
     border-top: #ff2121 2px solid;
@@ -85,7 +86,7 @@
 }
 
 body {
-    background: #f0f0f0;
+    background: #fafafa;
     border: 0;
     font-family: "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", Verdana, Lucida, Arial, Helvetica;
     font-weight: 400;
@@ -93,9 +94,6 @@ body {
     padding: 0
 }
 
-a {
-    color: #383e4b
-}
 
 h1 {
     font-size: 32px;
@@ -158,8 +156,11 @@ h6 {
     -webkit-box-shadow: 0 1px 0 1px #e4e6eb;
     -moz-box-shadow: 0 1px 0 1px #e4e6eb;
     box-shadow: 0 1px 0 1px #e4e6eb;
-    margin: 0 0 30px 0
+    margin: 0 35px 30px 35px;
+    padding:10px;
+    background-color: #ffffff;
 }
+
 
 .box.noOverflow {
     overflow: hidden
@@ -378,10 +379,13 @@ blockquote {
 }
 
 .navbar {
+    right:0;
+    left:0;
+    z-index: 1000000;
     margin: 0;
-    min-height: 40px;
+    height: 60px;
     border: 0;
-    background: #2f88c9;
+    background: #ffffff;/*#2f88c9;*/
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0
@@ -402,7 +406,12 @@ blockquote {
 }
 
 a.navbar-brand {
-    background: #1b6fad;
+    height: 60px;
+    line-height:60px;
+    font-size:17px;
+    font-weight: bold;
+    padding:0 8px 0 0;
+    background: #1775a8;
     text-align: center;
 }
 
@@ -417,7 +426,7 @@ a.navbar-brand.noBg {
 }
 
 a.navbar-brand:hover {
-    background: #0564af
+    background: #13679c
 }
 
 .header-nav {
@@ -427,22 +436,23 @@ a.navbar-brand:hover {
 }
 
 .header-nav .btn {
+    height:60px;
     display: inline-block;
     margin: 0;
     font-size: 15px;
     text-align: center;
     background: transparent;
     border: 0;
-    -webkit-border-radius: 0;
+    -webkit-border-radius: 0
     -moz-border-radius: 0;
     border-radius: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    box-shadow: none
+    box-shadow: none;
 }
 
 .header-nav a.btn {
-    color: #ffffff !important;
+    color: #555 !important;
     text-shadow: none !important;
     padding: 15px !important
 }
@@ -452,7 +462,7 @@ a.navbar-brand:hover {
 }
 
 .header-nav a.btn:hover {
-    background: #0a73be
+    background: #eeeeee;
 }
 
 .header-nav .avatar {
@@ -490,7 +500,7 @@ a.navbar-brand:hover {
 
 .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
     color: white;
-    background-color: #1e8fc6;
+    background-color: #eeeeee;
     outline: 0;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -697,12 +707,14 @@ ul.messages li .message {
 }
 
 a#main-menu-toggle {
-    color: white;
+    height:60px;
+    line-height: 60px;
+    color: #555555;
     position: absolute;
     z-index: 1000;
     top: 0;
     left: 5px;
-    padding: 10px 12px;
+    padding: 0 12px;
     font-size: 16px;
     text-shadow: none;
     text-decoration: none;
@@ -711,8 +723,10 @@ a#main-menu-toggle {
 
 #sidebar-left {
     background: #303741 !important;
-    padding: 10px !important
+    padding:80px 10px 10px 10px !important;
 }
+
+#content{padding:90px 0 0 0 !important;}
 
 .sidebar-nav > ul{font-size: 13px;}
 
@@ -1566,7 +1580,7 @@ footer a {
     -moz-border-radius: 50em;
     border-radius: 50em;
     width: 40px;
-    margin-right: 10px
+    margin-right: 10px;
 }
 
 .chat .contacts ul.list li .status {
@@ -2635,9 +2649,6 @@ div.dataTables_paginate ul.pagination {
 
 table.table {
     clear: both;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-    max-width: none !important
 }
 
 table.table .btn {
@@ -3692,8 +3703,10 @@ div.DTFC_RightFootWrapper table, div.DTFC_LeftFootWrapper table {
     background: #fff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px
+    border-radius: 2px;
 }
+
+
 
 .login-box input[type="text"], .login-box input[type="password"] {
     border: #949fae 1px solid !important;
@@ -3743,7 +3756,7 @@ div.DTFC_RightFootWrapper table, div.DTFC_LeftFootWrapper table {
     }
 
     .container {
-        width: 100% !important
+        width: 100% !important;
     }
 
     .container #content {
