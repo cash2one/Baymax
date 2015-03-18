@@ -100,30 +100,40 @@
 {% endblock %}
 
 {% block content %}
-    <div class="chat page">
-        <div class="chatArea">
-            <ul class="messages"></ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box box-orange">
+                    <div class="chat page">
+                        <div class="chatArea">
+                            <ul class="messages"></ul>
+                        </div>
+                        <input class="inputMessage" placeholder="Type here..."/>
+                    </div>
+                    <div class="login page">
+                        <div class="form">
+                            <h3 class="title">nickname</h3>
+                            <input class="usernameInput" type="text" maxlength="14"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-green">
+                    <canvas id="canvas" height="400" width="600"></canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="canvas-holder" class="box box-blue">
+                    <canvas id="chart-area" width="200" height="200"></canvas>
+                </div>
+            </div>
+
         </div>
-        <input class="inputMessage" placeholder="Type here..."/>
     </div>
-    <div class="login page">
-        <div class="form">
-            <h3 class="title">nickname</h3>
-            <input class="usernameInput" type="text" maxlength="14"/>
-        </div>
-    </div>
 
 
-    <div style="width:auto;height:400px;" class="box">
-        <div style="width:600px;height:400px;float:left;">
-            <canvas id="canvas" height="400" width="600"></canvas>
-        </div>
 
-
-        <div id="canvas-holder" style="width:220px;height:220px;float:left;">
-            <canvas id="chart-area" width="220" height="220"></canvas>
-        </div>
-    </div>
 
     <script>
         var randomScalingFactor = function () {
