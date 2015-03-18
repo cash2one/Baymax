@@ -22,7 +22,8 @@
     z-index: -1000;
 
     background-size: cover;
-    opacity:0.1;
+    blur:100px;
+    opacity:0.2;
 }
 
 .modal-content {
@@ -709,9 +710,11 @@ a#main-menu-toggle {
 }
 
 #sidebar-left {
-    background: #303741;
+    background: #303741 !important;
     padding: 10px !important
 }
+
+.sidebar-nav > ul{font-size: 13px;}
 
 #sidebar-left .search {
     background: #2d323d;
@@ -3678,9 +3681,14 @@ div.DTFC_RightFootWrapper table, div.DTFC_LeftFootWrapper table {
 }
 
 .login-box {
-    width: 300px;
-    padding: 20px;
-    margin: 100px auto;
+    width: 350px;
+    height:350px;
+    padding: 25px;
+
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin:-200px 0 0 -200px;
     background: #fff;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
