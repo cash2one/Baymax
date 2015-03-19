@@ -12,5 +12,6 @@ urlpatterns = patterns('',
     url(r'^device/', 'app.views.device_module'),
     url(r'^login/', 'app.views.login'),
     url(r'^logout/', 'app.views.logout'),
+    url(r'^test/', 'app.views.test_page'),
 
 )

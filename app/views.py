@@ -99,3 +99,7 @@ def device_module(request):
 def test_case(request):
     cases = TestCase.objects.all()
     return render_to_response("app/testcase.html", {"testcase": cases}, context_instance=RequestContext(request))
+
+
+def test_page(request):
+    return render_to_response("app/test.html", {"testcase": ''}, context_instance=RequestContext(request))

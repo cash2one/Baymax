@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TestManager</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/default.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery2.js"></script>
+</head>
+<body>
+<header class="navbar fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 brand">
+                <a href="#">
+                    <i class="fa fa-paper-plane"></i>
+                    <span>TestManager</span>
+                </a>
+                <a href="#" id="main-menu-toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="col-md-10 header-nav">
+                <form class="navbar-form navbar-left">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control nav-search" placeholder="Are you looking for something ?">
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope"></i><span class="badge">4</span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-menu-header">
+
+                            </li>
+                            <li class="avatar">
+                                <a href="index.html#">
+                                    <img src="{{ STATIC_URL }}img/avatar3.jpg">
+
+                                    <div>New message</div>
+                                    <small>1 minute ago</small>
+                                </a>
+                            </li>
+                            <li class="avatar">
+                                <a href="index.html#">
+                                    <img src="{{ STATIC_URL }}img/avatar2.jpg">
+
+                                    <div>New message</div>
+                                    <small>1 minute ago</small>
+                                </a>
+                            </li>
+                            <li class="dropdown-menu-footer text-center">
+                                <a href="index.html#">View all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#"><i class="fa fa-cog"></i></a></li>
+                    <li><a href="index.html#"><i class="fa fa-power-off"></i></a></li>
+                    <li class="dropdown">
+                        <a href="index.html#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                            <img src="{{ STATIC_URL }}img/avatar.jpg"><span class="badge">9</span>
+                            Administrator
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-menu-header text-center">
+                                <strong>Account</strong>
+                            </li>
+                            <li><a href="index.html#"><i class="fa fa-bell-o"></i> Updates <span
+                                    class="label label-info">42</span></a></li>
+                            <li><a href="index.html#"><i class="fa fa-envelope-o"></i> Messages <span
+                                    class="label label-success">42</span></a></li>
+                            <li class="dropdown-menu-header text-center">
+                                <strong>Settings</strong>
+                            </li>
+                            <li><a href="index.html#"><i class="fa fa-user"></i> Profile</a></li>
+
+                            <li><a href="index.html#"><i class="fa fa-file"></i> Projects <span
+                                    class="label label-primary">42</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="index.html#"><i class="fa fa-shield"></i> Lock Profile</a></li>
+                            <li><a href="index.html#"><i class="fa fa-lock"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<aside>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li>
+                        <a href="/app/task/">
+                            <i class="fa fa-tasks"></i> <span>Task</span>
+                            <small class="label pull-right small-red">3</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                           aria-controls="collapseOne">
+                            <i class="fa fa-coffee"></i>
+                            <span>TestCase</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <ul class="list-group">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Web</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Android</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> iOS</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Device</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
+                           aria-controls="collapseTwo">
+                            <i class="fa fa-briefcase"></i> <span>Module</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
+                            <ul class="list-group">
+                                <li><a href="/app/device/"><i class="fa fa-circle-o"></i> Web</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Android</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> iOS</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Device</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-paste"></i> <span>Result</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>Share</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i> <span>Charts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>Documentation</span>
+                            <small class="label pull-right small-green">5</small>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10 main-content">
+
+                <div class="box box-orange">
+                    <div class="box-header">fwefw</div>
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+                        <tr>
+                            <th><input type="checkbox"/></th>
+                            <th>序号</th>
+                            <th>任务名称</th>
+                            <th>类型</th>
+                            <th>任务数</th>
+                            <th>状态</th>
+                            <th>设备类型</th>
+                            <th>创建时间</th>
+                            <th>更新时间</th>
+                            <th>创建方式</th>
+                            <th>备注</th>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td>序号</td>
+                            <td>任务名称</td>
+                            <td>类型</td>
+                            <td>任务数</td>
+                            <td>状态</td>
+                            <td>设备类型</td>
+                            <td>创建时间</td>
+                            <td>更新时间</td>
+                            <td>创建方式</td>
+                            <td>备注</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td>序号</td>
+                            <td>任务名称</td>
+                            <td>类型</td>
+                            <td>任务数</td>
+                            <td>状态</td>
+                            <td>设备类型</td>
+                            <td>创建时间</td>
+                            <td>更新时间</td>
+                            <td>创建方式</td>
+                            <td>备注</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+</body>
+</html>
