@@ -9,24 +9,6 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/default.css">
     {% block css %}{% endblock %}
-
-    <script type="text/javascript">
-        jQuery(document).ready(function (e) {
-            $("#main-menu-toggle").click(function () {
-                if (e(this).hasClass("open")) {
-                    e(this).removeClass("open").addClass("close");
-                    e("#content").addClass("full");
-                    e(".navbar-brand").addClass("noBg");
-                    e("#sidebar").hide();
-                } else {
-                    e(this).removeClass("close").addClass("open");
-                    e("#content").removeClass("full");
-                    e(".navbar-brand").removeClass("noBg");
-                    e("#sidebar").show();
-                }
-            });
-        });
-    </script>
 </head>
 <body>
 <header class="navbar fixed-top">
@@ -152,5 +134,22 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery2.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
 {% block js %}{% endblock %}
+<script type="text/javascript">
+    jQuery(document).ready(function (e) {
+        $("#main-menu-toggle").click(function () {
+            if (e(this).hasClass("open")) {
+                e(this).removeClass("open").addClass("close");
+                e("#content").addClass("full");
+                e(".navbar-brand").addClass("noBg");
+                e("#sidebar").hide();
+            } else {
+                e(this).removeClass("close").addClass("open");
+                e("#content").removeClass("full");
+                e(".navbar-brand").removeClass("noBg");
+                e("#sidebar").show();
+            }
+        });
+    });
+</script>
 </body>
 </html>
