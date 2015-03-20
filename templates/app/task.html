@@ -82,30 +82,32 @@
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Add Task</h4>
                 </div>
-                <form action="" method="post">
+                <form action="" method="post" class="form-inline">
                     <div class="modal-body">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label class="control-label">任务名称:</label>{{ form.TaskName }}
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">类型:</label>{{ form.TaskType }}
+                        <div class="row form-col2">
+                            <div class="col-md-6"><label class="control-label">任务名称:</label>{{ form.TaskName }}</div>
+                            <div class="col-md-6"><label class="control-label">类型:</label>{{ form.TaskType }}</div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="control-label">执行数:</label>{{ form.TaskCount }}
-                        </div>
-                        <!--div class="form-group">
+                        <div class="row form-col2">
+                            <div class="col-md-6">
+                                <label class="control-label">执行数:</label>{{ form.TaskCount }}
+                            </div>
+                            <!--div class="form-group">
                                 <label class="control-label">状态:</label>{{ form.TaskState }}
                             </div-->
-                        <div class="form-group">
-                            <label class="control-label">设备类型:</label>{{ form.DeviceType }}
+                            <div class="col-md-6">
+                                <label class="control-label">设备类型:</label>{{ form.DeviceType }}
+                            </div>
                         </div>
                         <!--div class="form-group">
                                 <label class="control-label">创建方式:</label>{{ form.CreateWay }}
                             </div-->
-                        <div class="form-group">
-                            <label class="control-label">是否共享:</label>{{ form.IsShared }}
+                        <div class="row form-col2">
+                            <div class="col-md-12">
+                                <label class="control-label">是否共享:</label>{{ form.IsShared }}
+                            </div>
                         </div>
                         <!--class="form-group">
                                 <label class="control-label">创建时间:</label>{{ form.CreateTime }}
@@ -113,8 +115,10 @@
                             <div class="form-group">
                                 <label class="control-label">更新时间:</label>{{ form.UpdateTime }}
                             </div-->
-                        <div class="form-group">
-                            <label class="control-label">备注:</label>{{ form.Description }}
+                        <div class="row form-col2">
+                            <div class="col-md-12">
+                                <label class="control-label">备注:</label>{{ form.Description }}
+                            </div>
                         </div>
 
                     </div>

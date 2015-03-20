@@ -22,6 +22,15 @@ body {
     border: 0;
 }
 
+.row.form-col2 {
+    padding: 5px 0;
+}
+
+.row.form-col2 label {
+    width: 75px;
+
+}
+
 .form-control.nav-search {
     width: 150px;
 }
