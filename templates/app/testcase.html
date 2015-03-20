@@ -1,16 +1,42 @@
-{% extends "base.html" %}
-
-{% block page_action %}
-    <li><a href="#">Add TestCase</a></li>
-    <li style="border-right:#267bc8 1px solid"><a href="#">Del TestCase</a></li>
-{% endblock %}
+{% extends "base-app.html" %}
 
 {% block content %}
-    <h1 class="page-header">
-        TestCase
-    </h1>
+    <div class="box box-orange">
+        <div class="box-header">
+            <h2>Task</h2>
 
-    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+            <div class="box-toolbar">
+
+                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i
+                            class="fa fa-plus"></i> Add
+                    </button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-trash"></i> Delete
+                    </button>
+                    <button type="button" class="btn btn-default">More</button>
+                </div>
+                <nav>
+                    <ul class="pagination pagination-sm">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
         <tr>
             <th><input type="checkbox"/></th>
             <th>序号</th>
@@ -35,6 +61,7 @@
                 <td>{{ case.Description }}</td>
             </tr>
         {% endfor %}
+        </table>
+    </div>
 
-    </table>
 {% endblock %}
