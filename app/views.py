@@ -100,6 +100,6 @@ def test_case(request):
     cases = TestCase.objects.all()
     return render_to_response("app/testcase.html", {"testcase": cases}, context_instance=RequestContext(request))
 
-
+@login_required(login_url="/app/login/")
 def test_page(request):
     return render_to_response("app/test.html", {"testcase": ''}, context_instance=RequestContext(request))
