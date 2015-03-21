@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from django.shortcuts import render
 
 from django.shortcuts import render_to_response
@@ -8,7 +10,8 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, TestCase, AppUser, DeviceModule
 from django.contrib.auth.decorators import login_required
-import time,urllib2,re
+import time, urllib2, re
+
 
 @login_required(login_url="/app/login/")
 def index(request):
@@ -16,19 +19,21 @@ def index(request):
     return render_to_response("app/index.html", {"tasks": tasks}, context_instance=RequestContext(request))
     # return render(request,'index.html')
 
+
 def getBingImg(url):
     re_img = re.compile(r'(?<=g_img=\{url:\').*?(?=.jpg)')
     html = urllib2.urlopen(url).read()
 
     match = re_img.search(html)
     if match:
-        return match.group()+'.jpg'
+        return match.group() + '.jpg'
+
 
 def login(request):
     if request.method == 'GET':
         form = LoginForm()
-        bingimg=getBingImg('http://cn.bing.com/')
-        return render_to_response('app/login.html', RequestContext(request, {'form': form,'bingimg':bingimg }))
+        bingimg = getBingImg('http://cn.bing.com/')
+        return render_to_response('app/login.html', RequestContext(request, {'form': form, 'bingimg': bingimg}))
     else:
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -43,6 +48,7 @@ def login(request):
                                           RequestContext(request, {'form': form, 'password_is_wrong': True}))
         else:
             return render_to_response('app/login.html', RequestContext(request, {'form': form, }))
+
 
 def logout(request):
     auth.logout(request)
@@ -80,7 +86,6 @@ def task(request):
                         Creator=creator, DeviceType=deviceType, Description=description, CreateTime=createTime,
                         UpdateTime=updateTime, CreateWay=createWay,
                         IsShared=isShared)
-
             task.save()
             # id = Task.objects.order_by('-publish_time')[0].id
             return HttpResponseRedirect('http://www.baidu.com')
@@ -91,14 +96,22 @@ def task(request):
 
 @login_required(login_url="/app/login/")
 def device_module(request):
+    module = request.GET.get('module')
     devices = DeviceModule.objects.all()
-    return render_to_response("app/device.html", {"devices": devices}, context_instance=RequestContext(request))
+    #devices = DeviceModule.objects.filter(id=2)
+
+    # if m_nav is not None:
+    return render_to_response("app/device.html", {"devices": devices, 'module': module, 'url_path': request.path},
+                              context_instance=RequestContext(request))
 
 
 @login_required(login_url="/app/login/")
 def test_case(request):
     cases = TestCase.objects.all()
-    return render_to_response("app/testcase.html", {"testcase": cases}, context_instance=RequestContext(request))
+    sub_nav = request.GET.get('sub_nav')
+    return render_to_response("app/testcase.html", {"testcase": cases, 'sub_nav': sub_nav, 'url_path': request.path},
+                              context_instance=RequestContext(request))
+
 
 @login_required(login_url="/app/login/")
 def test_page(request):

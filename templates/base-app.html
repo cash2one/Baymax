@@ -69,15 +69,19 @@
                             <span>TestCase</span>
                             <i class="fa fa-angle-right pull-right"></i>
                         </a>
-
-                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
-                             aria-labelledby="headingOne">
-                            <ul class="list-group">
-                                <li><a href="/app/device/">Web</a></li>
-                                <li><a href="#">Android</a></li>
-                                <li><a href="#">iOS</a></li>
-                                <li><a href="#">Device</a></li>
-                            </ul>
+                        {% if '/app/testcase' in url_path %}
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                        {% else %}
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                        {% endif %}
+                        <ul class="list-group">
+                            <li><a href="/app/testcase/">Web</a></li>
+                            <li><a href="#">Android</a></li>
+                            <li><a href="#">iOS</a></li>
+                            <li><a href="#">Device</a></li>
+                        </ul>
                         </div>
                     </li>
                     <li>
@@ -86,15 +90,20 @@
                             <i class="fa fa-briefcase"></i> <span>Module</span>
                             <i class="fa fa-angle-right pull-right"></i>
                         </a>
+                        {% if '/app/device' in url_path %}
+                            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                        {% else %}
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                        {% endif %}
 
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                             aria-labelledby="headingTwo">
-                            <ul class="list-group">
-                                <li><a href="/app/device/">Web</a></li>
-                                <li><a href="#">Android</a></li>
-                                <li><a href="#">iOS</a></li>
-                                <li><a href="#">Device</a></li>
-                            </ul>
+                        <ul class="list-group">
+                            <li><a href="/app/device/?module=web">Web</a></li>
+                            <li><a href="/app/device/?module=android">Android</a></li>
+                            <li><a href="/app/device/?module=ios">iOS</a></li>
+                            <li><a href="/app/device/?module=device">Device</a></li>
+                        </ul>
                         </div>
                     </li>
                     <li>
