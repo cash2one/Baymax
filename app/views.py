@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from .models import Task, TestCase, AppUser, DeviceModule
 from django.contrib.auth.decorators import login_required
-import time, urllib2, re
+import time, urllib2, re, json
 
 
 @login_required(login_url="/app/login/")
@@ -98,7 +98,7 @@ def task(request):
 def device_module(request):
     module = request.GET.get('module')
     devices = DeviceModule.objects.all()
-    #devices = DeviceModule.objects.filter(id=2)
+    # devices = DeviceModule.objects.filter(id=2)
 
     # if m_nav is not None:
     return render_to_response("app/device.html", {"devices": devices, 'module': module, 'url_path': request.path},
@@ -113,6 +113,18 @@ def test_case(request):
                               context_instance=RequestContext(request))
 
 
-
 def wap(request):
     return render_to_response("app/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
+
+
+def result_data(request):
+    page = request.GET.get('page')
+    response_data = [{'result': 'Facebook本周举行开发者大会', 'image': 'http://p2.pstatp.com/list/2575/443537243'},
+                     {'result': '迪斯尼CEO曾隐瞒乔布斯病情长达三年之久', 'image': 'http://p1.pstatp.com/list/2575/540112485'},
+                     {'result': '中影起诉优酷等网站侵权《狼图腾》', 'image': 'http://p1.pstatp.com/list/2540/6698892493'},
+                     {'result': '网络租房比例过半 94%网民怨中介费高', 'image': 'http://p2.pstatp.com/list/2563/3821559120'},
+                     {'result': '披着“羊皮”朋友圈谣言 你还能明辨吗', 'image': 'http://p2.pstatp.com/list/2551/405337174'},
+                     {'result': '网友免费在线听歌，环球等唱片公司', 'image': 'http://p1.pstatp.com/list/2540/6698892493'},
+                     {'result': '谷歌欲“革命”电视广告：定向按观看次', 'image': 'http://p1.pstatp.com/list/2575/540112485'},
+                     {'result': '彭博社称卡巴斯基与俄罗斯间谍关系密切', 'image': 'http://p2.pstatp.com/list/2575/443537243'}]
+    return HttpResponse(json.dumps(response_data[int(page)]), content_type="application/json")
