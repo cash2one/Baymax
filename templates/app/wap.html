@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/red.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var winH = $(window).height(); //页面可视区域高度
+            var i = 1;
+            $(window).scroll(function () {
+                var pageH = $(document.body).height();
+                var scrollT = $(window).scrollTop(); //滚动条top
+                var aa = (pageH - winH - scrollT) / winH;
+                if (aa < 0.02) {
+                    $.getJSON("result.php", {page: i}, function (json) {
+                        if (json) {
+                            var str = "";
+                            $.each(json, function (index, array) {
+                                var str = "<div class=\"single_item\"><div class=\"element_head\">";
+                                str += "<div class=\"date\">" + array['date'] + "</div>";
+                                str += "<div class=\"author\">" + array['author'] + "</div>";
+                                str += "</div><div class=\"content\">" + array['content'] + "</div></div>";
+                                $("#container").append(str);
+                            });
+                            i++;
+                        } else {
+                            $(".nodata").show().html("别滚动了，已经到底了。。。");
+                            return false;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+<header class="header-nav">
+    <div class="top-bar">
+        <a href="#" class="avatar"><i class="fa fa-user"></i></a>
+
+        <div class="title">今日头条</div>
+        <a href="#" class="search"><i class="fa fa-search"></i></a>
+    </div>
+    <div class="top-menu">
+        <ul class="menu-list">
+            <li><a href="#">推荐</a></li>
+            <li><a href="#">热点</a></li>
+            <li><a href="#">社会</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">科技</a></li>
+            <li><a href="#">热点</a></li>
+            <li><a href="#">社会</a></li>
+        </ul>
+        <a href="#" class="more"><i class="fa fa-ellipsis-h"></i></a>
+    </div>
+</header>
+
+<section>
+    <a href="#" class="content-row">
+        <h2>A股半天成交7000亿元 多家券商交易系统</h2>
+        <ul class="img-list">
+            <li>
+                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/8371381749"/></div>
+            </li>
+            <li>
+                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/5289568197"/></div>
+            </li>
+            <li>
+                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2551/7733044917"/></div>
+            </li>
+        </ul>
+        <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+    </a>
+
+    <a href="#" class="content-row">
+        <h2>内蒙古原公安厅长持枪追杀女子详情披露</h2>
+        <ul class="img-list">
+            <li>
+                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2559/5820993984"/></div>
+            </li>
+            <li>
+                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2543/7711884412"/></div>
+            </li>
+            <li>
+                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2556/2263086381"/></div>
+            </li>
+        </ul>
+        <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+    </a>
+
+    <a href="#" class="content-row">
+        <div class="img-right"><img src="http://p2.pstatp.com/list/2522/151278873"/></div>
+        <div class="txt-content">
+            <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
+
+            <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+        </div>
+    </a>
+
+    <a href="#" class="content-row">
+        <div class="img-right"><img src="http://p1.pstatp.com/list/2551/7408484741"/></div>
+        <div class="txt-content">
+            <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
+
+            <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+        </div>
+    </a>
+</section>
+
+</body>
+</html>

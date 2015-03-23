@@ -113,6 +113,6 @@ def test_case(request):
                               context_instance=RequestContext(request))
 
 
-@login_required(login_url="/app/login/")
-def test_page(request):
-    return render_to_response("app/test.html", {"testcase": ''}, context_instance=RequestContext(request))
+
+def wap(request):
+    return render_to_response("app/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
