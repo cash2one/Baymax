@@ -1,4 +1,5 @@
 # coding=utf-8
+__author__ = 'guguohai@outlook.com'
 
 from django.shortcuts import render
 
@@ -8,15 +9,6 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import time, urllib2, re, json
-
-
-def wap(request):
-    return render_to_response("news/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
-
-
-def wap_menu(request):
-    return render_to_response("news/wap_menu.html", {"testcase": ''}, context_instance=RequestContext(request))
-
 
 def result_data(request):
     page = request.GET.get('page')

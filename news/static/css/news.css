@@ -14,6 +14,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     width: 100%;
     opacity: 0.9;
     position: fixed;
+    z-index: 1000000;
 }
 
 #container {
@@ -27,23 +28,27 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .top-bar > a {
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
     display: block;
-    font-size: 22px;
+    font-size: 21px;
     color: #ffffff;
     text-align: center;
     position: absolute;
-    top: 0;
+    top: 6px;
 }
 
 .top-bar .avatar {
-    left: 0;
+    background-color: #f74d4d;
+    left: 10px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    border-radius: 32px;
 }
 
 .top-bar .search {
-    right: 0;
+    right: 8px;
 }
 
 .top-bar .title {
@@ -107,29 +112,41 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 #pop-fav {
-    width: 180px;
-    height: 40px;
+    height: 30px;
     position: absolute;
-    right: 0;
+    padding: 0 5px;
+    right: 5px;
     top: 0;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    background-color: #555;
 }
 
 #pop-fav li {
     list-style: none;
+    background-color: #555;
     float: left;
 }
 
 #pop-fav li a {
     display: block;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 10px;
-    background-color: #555;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
     color: #fff;
     text-align: center;
     text-decoration: none;
+}
+
+#pop-fav li a#fav_close {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    margin: 5px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    background-color: #787878;
 }
 
 @media (max-width: 480px) {
@@ -164,6 +181,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     padding: 0 0 5px 6px;
     color: #4d4d4d;
     font-weight: normal;
+    position: relative;
 }
 
 .content-row ul.img-list {
@@ -219,7 +237,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     font-size: 12px;
     vertical-align: middle;
     padding: 0 5px;
-    clear: both;
+    position: relative;
 }
 
 .content-row .news_tips .nt_left {
@@ -229,31 +247,20 @@ ul, li, h1, h2, h3, dl, dd, dt {
 
 .content-row .news_tips .nt_right {
     overflow: auto;
-    position: relative;
     float: right;
 }
 
-.content-row .news_tips i {
+.content-row .news_tips i{padding: 0 0 0 20px;}
+
+.content-row .news_tips button {
     padding: 0 0 0 15px;
+    color: #999999;
+    border: 0;
+    background-color: transparent;
+    text-decoration: none;
 }
 
 #loading-data {
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    color: #555;
-    background-color: #eee;
-    border-top: #ccc 1px solid;
-    display: none;
-    left: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 10000;
-    opacity: 0.8;
-}
-
-#no-data {
     width: auto;
     height: 30px;
     line-height: 30px;

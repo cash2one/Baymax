@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/red.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/news.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -24,7 +24,7 @@
                         url: "/news/result_data/?page=" + i,
                         dataType: "json",
                         beforeSend: function () {
-                            $("#loading-data").show();
+                            $("#loading-data").html("<i class='fa fa-spinner fa-spin'></i>加载中...").show();
                         },
                         success: function (response) {
                             if (response) {
@@ -33,24 +33,22 @@
                                     str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
                                     str += "<div class='txt-content'>";
                                     str += "<h2>" + array['result'] + "</h2>";
-                                    str += "<div class='news_tips'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
-                                    str += "</div>";
-                                    str += "</a>";
+                                    str += "<div class='news_tips'>";
+                                    str += "<span class='nt_left'>网易新闻<i class='fa fa-comment-o'></i> 488</span>";
+                                    str += "<span class='nt_right'>40分钟前 <button class='fa fa-heart-o' onclick='showFav(this);return false'>";
+                                    str += "</button></span></div></div></a>";
                                     $("#container").append(str);
                                 });
                                 i++;
                                 has_load = true;
-                                $("#loading-data").hide();
+                                $("#loading-data").empty().hide();
                             }
                             else {
-                                $("#loading-data").hide();
-                                if ($("#no-data").length == 0) {
-                                    $("body").append("<div id='no-data'>没有更多的数据...</div>");
-                                }
+                                $("#loading-data").text("没有更多的数据").show();
                             }
                         },
                         error: function () {
-                            $("#loading-data").hide();
+                            $("#loading-data").empty().hide();
                         }
                     });
                 }
@@ -59,10 +57,10 @@
 
         function showFav(obj) {
             $("body").find("#pop-fav").remove();
-            $(obj).parentsUntil(".news_tips").append("<ul id='pop-fav'>" +
-            "<li><a href='#'>收藏</a></li>" +
-            "<li><a href='#'>不感兴趣</a></li>" +
-            "<li><a id='fav_close' href='#' onclick='closeFav(this)'>×</a></li>" +
+            $(obj).parent().parent().append("<ul id='pop-fav'>" +
+            "<li><a href='#'><i class='fa fa-heart'></i> 收藏</a></li>" +
+            "<li><a href='#'><i class='fa fa-frown-o'></i> 不感兴趣</a></li>" +
+            "<li><a id='fav_close' href='javascript:void(0)' onclick='closeFav(this)'>×</a></li>" +
             "</ul>");
 
         }
@@ -111,7 +109,8 @@
         </ul>
         <div class="news_tips">
             <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                 onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 
@@ -130,56 +129,55 @@
         </ul>
         <div class="news_tips">
             <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                 onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 
     <a href="#" class="content-row">
         <div class="img-right"><img src="http://p2.pstatp.com/list/2522/151278873"/></div>
-        <div class="txt-content">
-            <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
 
-            <div class="news_tips">
-                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
-            </div>
+        <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
+
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                     onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 
     <a href="#" class="content-row">
         <div class="img-right"><img src="http://p1.pstatp.com/list/2551/7408484741"/></div>
-        <div class="txt-content">
-            <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
 
-            <div class="news_tips">
-                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
-            </div>
+        <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
+
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                 onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 
     <a href="#" class="content-row">
-        <div class="txt-content">
-            <h2>媒体：下只“老虎”很可能出现在意想不到的地方</h2>
+        <h2>媒体：下只“老虎”很可能出现在意想不到的地方</h2>
 
-            <div class="news_tips">
-                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
-            </div>
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                     onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 
     <a href="#" class="content-row">
-        <div class="txt-content">
-            <h2>就是这么任性！ 苹果iPhone5c给钱就卖</h2>
+        <h2>就是这么任性！ 苹果iPhone5c给钱就卖</h2>
 
-            <div class="news_tips">
-                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
-            </div>
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
+                                                 onclick="showFav(this);return false"></button></span>
         </div>
     </a>
 </div>
-<div id="loading-data"><i class="fa fa-spinner fa-spin"></i>加载中...</div>
+<div id="loading-data"></div>
 </body>
 </html>

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'news',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testmanager',
         'USER': 'root',
-        'PASSWORD': 'root2158',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
