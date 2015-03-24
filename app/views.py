@@ -116,6 +116,8 @@ def test_case(request):
 def wap(request):
     return render_to_response("app/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
 
+def wap_menu(request):
+    return render_to_response("app/wap_menu.html", {"testcase": ''}, context_instance=RequestContext(request))
 
 def result_data(request):
     page = request.GET.get('page')

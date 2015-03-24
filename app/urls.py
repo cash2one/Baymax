@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^logout/', 'app.views.logout'),
     url(r'^wap/', 'app.views.wap'),
     url(r'^result_data/$', 'app.views.result_data'),
+    url(r'^wap_menu/', 'app.views.wap_menu'),
 
 )
