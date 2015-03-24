@@ -6,43 +6,53 @@
     <title></title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/red.css">
-    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery2.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
             var winH = $(window).height(); //页面可视区域高度
             var i = 1;
+            var has_load = true;
             $(window).scroll(function () {
                 var pageH = $(document.body).height();
                 var scrollT = $(window).scrollTop(); //滚动条top
                 var sc = (pageH - winH - scrollT) / winH;
-                if (sc < 0.02) {
-                    $.getJSON("/app/result_data/?page=" + i, function () {
-                        $("#loading-data").show();
-                    }).success(function (json) {
-                        if (json) {
-                            var str = "";
-                            $.each(json, function (index, array) {
-                                str = "<a href='#' class='content-row'>";
-                                str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
-                                str += "<div class='txt-content'>";
-                                str += "<h2>" + array['result'] + "</h2>";
-                                str += "<div class='comment-info'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
-                                str += "</div>";
-                                str += "</a>";
-                                $("#container").append(str);
-                            });
-                            i++;
-                        }
-                        else {
-                            if ($("#no-data").length == 0) {
-                                $("body").append("<div id='no-data'>没有更多的数据...</div>");
-                            }
-                            return false;
-                        }
-                    }).complete(function () {
-                        $("#loading-data").hide();
-                    });
 
+                if (sc < 0.02 && has_load) {
+                    has_load = false;
+                    $.ajax({
+                        type: "GET",
+                        url: "/app/result_data/?page=" + i,
+                        dataType: "json",
+                        beforeSend: function () {
+                            $("#loading-data").show();
+                        },
+                        success: function (response) {
+                            if (response) {
+                                $.each(response, function (index, array) {
+                                    str = "<a href='#' class='content-row'>";
+                                    str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
+                                    str += "<div class='txt-content'>";
+                                    str += "<h2>" + array['result'] + "</h2>";
+                                    str += "<div class='comment-info'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
+                                    str += "</div>";
+                                    str += "</a>";
+                                    $("#container").append(str);
+                                });
+                                i++;
+                                has_load = true;
+                                $("#loading-data").hide();
+                            }
+                            else {
+                                $("#loading-data").hide();
+                                if ($("#no-data").length == 0) {
+                                    $("body").append("<div id='no-data'>没有更多的数据...</div>");
+                                }
+                            }
+                        },
+                        error: function () {
+                            $("#loading-data").hide();
+                        }
+                    });
                 }
             });
         });
@@ -122,6 +132,6 @@
         </div>
     </a>
 </div>
-<div id="loading-data">loading...</div>
+<div id="loading-data"><i class="fa fa-spinner fa-spin"></i>加载中...</div>
 </body>
 </html>
