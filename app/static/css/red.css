@@ -200,13 +200,22 @@ ul, li, h1, h2, h3 {
     height: 30px;
     line-height: 30px;
     text-align: center;
-    color:#555;
+    color: #555;
     background-color: #eee;
     border-top: #ccc 1px solid;
     display: none;
-    position: fixed;
     left: 0;
     bottom: 0;
+    position: fixed;
     z-index: 10000;
     opacity: 0.8;
+}
+
+#no-data {
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #555;
+    background-color: #eee;
 }

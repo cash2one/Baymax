@@ -158,5 +158,5 @@ def result_data(request):
                       {'result': '披着“羊皮”朋友圈谣言 你还能明辨吗', 'image': 'http://p2.pstatp.com/list/2551/405337174'},
                       {'result': '网友免费在线听歌，环球等唱片公司', 'image': 'http://p1.pstatp.com/list/2540/6698892493'},
                       {'result': '谷歌欲“革命”电视广告：定向按观看次', 'image': 'http://p1.pstatp.com/list/2575/540112485'},
-                      {'result': '彭博社称卡巴斯基与俄罗斯间谍关系密切', 'image': 'http://p2.pstatp.com/list/2575/443537243'}]]
+                      {'result': '彭博社称卡巴斯基与俄罗斯间谍关系密切', 'image': 'http://p2.pstatp.com/list/2575/443537243'}],None]
     return HttpResponse(json.dumps(response_data[int(page)]), content_type="application/json")
