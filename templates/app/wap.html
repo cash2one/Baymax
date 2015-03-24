@@ -16,22 +16,27 @@
                 var scrollT = $(window).scrollTop(); //滚动条top
                 var sc = (pageH - winH - scrollT) / winH;
                 if (sc < 0.02) {
-                    $.getJSON("/app/result_data/?page=" + i, function (json) {
-                        if (json) {
+                    $.getJSON("/app/result_data/?page=" + i, function () {
+                        $("#loading-data").text("loading...").show();
+                    }).success(function (json) {
+                        alert(json);
+                        var str = "";
+                        $.each(json, function (index, array) {
                             str = "<a href='#' class='content-row'>";
-                            str += "<div class='img-right'><img src='" + json['image'] + "'/></div>";
+                            str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
                             str += "<div class='txt-content'>";
-                            str += "<h2>" + json['result'] + "</h2>";
+                            str += "<h2>" + array['result'] + "</h2>";
                             str += "<div class='comment-info'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
                             str += "</div>";
                             str += "</a>";
                             $("#container").append(str);
-                            i++;
-                        } else {
-                            //$(".nodata").show().html("别滚动了，已经到底了。。。");
-                            alert("none");
-                            return false;
-                        }
+                        });
+                        i++;
+                    }).complete(function () {
+                        //$("#loading-data").empty().hide();
+                    }).error(function () {
+                        $("#loading-data").text("没有更多的数据...").show();
+                        return false;
                     });
 
                 }
@@ -113,6 +118,6 @@
         </div>
     </a>
 </div>
-
+<div id="loading-data"></div>
 </body>
 </html>

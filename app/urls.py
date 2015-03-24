@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^login/', 'app.views.login'),
     url(r'^logout/', 'app.views.logout'),
     url(r'^wap/', 'app.views.wap'),
-    url(r'^result_data/', 'app.views.result_data'),
+    url(r'^result_data/$', 'app.views.result_data'),
 
 )
