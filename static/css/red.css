@@ -5,7 +5,7 @@ body {
     font-family: "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", Verdana, Lucida, Arial, Helvetica;
 }
 
-ul, li, h1, h2, h3,dl,dd,dt {
+ul, li, h1, h2, h3, dl, dd, dt {
     margin: 0;
     padding: 0;
 }
@@ -106,6 +106,31 @@ ul, li, h1, h2, h3,dl,dd,dt {
     text-decoration: none;
 }
 
+#pop-fav {
+    width: 180px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+#pop-fav li {
+    list-style: none;
+    float: left;
+}
+
+#pop-fav li a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
 
 @media (max-width: 480px) {
     .container {
@@ -187,15 +212,29 @@ ul, li, h1, h2, h3,dl,dd,dt {
     padding: 0;
 }
 
-.content-row .comment-info {
+.content-row .news_tips {
+    height: 22px;
+    line-height: 22px;
     color: #999999;
     font-size: 12px;
     vertical-align: middle;
-    padding: 5px 0 0 0;
+    padding: 0 5px;
+    clear: both;
 }
 
-.news-source {
-    padding: 0 15px 0 6px;
+.content-row .news_tips .nt_left {
+    overflow: auto;
+    float: left;
+}
+
+.content-row .news_tips .nt_right {
+    overflow: auto;
+    position: relative;
+    float: right;
+}
+
+.content-row .news_tips i {
+    padding: 0 0 0 15px;
 }
 
 #loading-data {
@@ -248,8 +287,8 @@ ul, li, h1, h2, h3,dl,dd,dt {
 
 .channel-list dd a {
     width: 90%;
-    margin:0 auto;
-    color:#4a4a4a;
+    margin: 0 auto;
+    color: #4a4a4a;
     background-color: #eee;
     padding: 8px 0;
     text-align: center;

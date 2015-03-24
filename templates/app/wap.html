@@ -33,7 +33,7 @@
                                     str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
                                     str += "<div class='txt-content'>";
                                     str += "<h2>" + array['result'] + "</h2>";
-                                    str += "<div class='comment-info'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
+                                    str += "<div class='news_tips'><span class='news-source'>网易新闻</span><i class='fa fa-comment-o'></i> 488</div>";
                                     str += "</div>";
                                     str += "</a>";
                                     $("#container").append(str);
@@ -56,6 +56,20 @@
                 }
             });
         });
+
+        function showFav(obj) {
+            $("body").find("#pop-fav").remove();
+            $(obj).parentsUntil(".news_tips").append("<ul id='pop-fav'>" +
+            "<li><a href='#'>收藏</a></li>" +
+            "<li><a href='#'>不感兴趣</a></li>" +
+            "<li><a id='fav_close' href='#' onclick='closeFav(this)'>×</a></li>" +
+            "</ul>");
+
+        }
+
+        function closeFav(obj) {
+            $(obj).parent().parent().remove();
+        }
     </script>
 
 </head>
@@ -95,7 +109,10 @@
                 <div class="img-wrap"><img src="http://p1.pstatp.com/list/2551/7733044917"/></div>
             </li>
         </ul>
-        <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+            <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+        </div>
     </a>
 
     <a href="#" class="content-row">
@@ -111,7 +128,10 @@
                 <div class="img-wrap"><img src="http://p1.pstatp.com/list/2556/2263086381"/></div>
             </li>
         </ul>
-        <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+        <div class="news_tips">
+            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+            <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+        </div>
     </a>
 
     <a href="#" class="content-row">
@@ -119,7 +139,10 @@
         <div class="txt-content">
             <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
 
-            <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+            <div class="news_tips">
+                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            </div>
         </div>
     </a>
 
@@ -128,7 +151,32 @@
         <div class="txt-content">
             <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
 
-            <div class="comment-info"><span class="news-source">网易新闻</span><i class="fa fa-comment-o"></i> 488</div>
+            <div class="news_tips">
+                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="content-row">
+        <div class="txt-content">
+            <h2>媒体：下只“老虎”很可能出现在意想不到的地方</h2>
+
+            <div class="news_tips">
+                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="content-row">
+        <div class="txt-content">
+            <h2>就是这么任性！ 苹果iPhone5c给钱就卖</h2>
+
+            <div class="news_tips">
+                <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
+                <span class="nt_right">40分钟前 <i class="fa fa-heart-o" onclick="showFav(this)"></i></span>
+            </div>
         </div>
     </a>
 </div>
