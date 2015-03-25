@@ -295,11 +295,12 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .news-content >p {
-    text-indent: 28px;
-    font-size: 14px;
+    font-size: 15px;
     padding: 5px;
     line-height: 22px;
 }
+
+.news-content img{max-width: 100%;}
 
 .news_tips {
     height: 22px;
