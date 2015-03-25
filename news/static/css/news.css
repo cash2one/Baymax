@@ -230,7 +230,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .content-row h2 {
-    font-size: 20px;
+    font-size: 18px;
     padding: 0 0 5px 6px;
     color: #4d4d4d;
     font-weight: normal;
@@ -295,9 +295,9 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .news-content >p {
-    font-size: 15px;
+    font-size: 1.12em;
     padding: 5px;
-    line-height: 22px;
+    line-height: 1.5em;
 }
 
 .news-content img{max-width: 100%;}
@@ -323,7 +323,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .news_tips > span > i {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 10px;
 }
 
 .news_tips button {
