@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    font-family: "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", Verdana, Lucida, Arial, Helvetica;
+    font-family: "Microsoft Yahei", Verdana, Lucida, Arial, Helvetica;
 }
 
 ul, li, h1, h2, h3, dl, dd, dt {
@@ -60,7 +60,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 #avatar-desc ul {
-    padding:10px 0 0 0;
+    padding: 10px 0 0 0;
     position: relative;
 }
 
@@ -70,21 +70,21 @@ ul, li, h1, h2, h3, dl, dd, dt {
     border-bottom: #555 1px solid;
     font-size: 14px;
     font-weight: normal;
-    padding:20px 0 20px 10px;
+    padding: 20px 0 20px 10px;
 }
 
 #avatar-desc ul li {
     color: #fff;
-    font-size:20px;
+    font-size: 20px;
     line-height: 50px;
-    padding:0 0 0 30px;
-    border-bottom:#000 1px solid;
+    padding: 0 0 0 30px;
+    border-bottom: #000 1px solid;
     list-style: none;
 }
 
 #avatar-desc ul li a {
     color: #fff;
-    padding:0 0 0 15px;
+    padding: 0 0 0 15px;
     text-decoration: none;
 }
 
@@ -156,7 +156,6 @@ ul, li, h1, h2, h3, dl, dd, dt {
     height: 20px;
     position: absolute;
     padding: 5px 0 5px 5px;
-    right: 5px;
     top: 0;
     z-index: 100;
     background-color: #555;
@@ -188,13 +187,14 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 #pop-fav li a#fav_close {
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
     padding: 0;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
+    margin-top: 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     background-color: #787878;
 }
 
@@ -268,7 +268,8 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .content-row .img-right > img {
-    width: 95%;
+    width: 100%;
+    border: 0;
 }
 
 .content-row .txt-content {
@@ -283,7 +284,23 @@ ul, li, h1, h2, h3, dl, dd, dt {
     padding: 0;
 }
 
-.content-row .news_tips {
+.news-content {
+    overflow: auto;
+    padding: 10px;
+}
+
+.news-content >h1 {
+    font-size: 22px;
+    padding: 0 5px 10px 5px;
+}
+
+.news-content >p {
+    font-size: 14px;
+    padding: 5px;
+    line-height: 22px;
+}
+
+.news_tips {
     height: 22px;
     line-height: 22px;
     color: #999999;
@@ -291,24 +308,23 @@ ul, li, h1, h2, h3, dl, dd, dt {
     vertical-align: middle;
     padding: 0 5px;
     position: relative;
-    clear: both;
 }
 
-.content-row .news_tips .nt_left {
+.news_tips .nt_left {
     overflow: auto;
     float: left;
 }
 
-.content-row .news_tips .nt_right {
+.news_tips .nt_right {
     overflow: auto;
     float: right;
 }
 
-.content-row .news_tips > span > i {
+.news_tips > span > i {
     padding: 0 0 0 20px;
 }
 
-.content-row .news_tips button {
+.news_tips button {
     padding: 0;
     margin-left: 10px;
     cursor: pointer;

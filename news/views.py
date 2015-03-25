@@ -14,6 +14,10 @@ def wap(request):
     return render_to_response("news/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
 
 
+def wap_con(request):
+    return render_to_response("news/wap_content.html", {"testcase": ''}, context_instance=RequestContext(request))
+
+
 def wap_menu(request):
     return render_to_response("news/wap_menu.html", {"testcase": ''}, context_instance=RequestContext(request))
 

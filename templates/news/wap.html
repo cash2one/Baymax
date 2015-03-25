@@ -71,13 +71,21 @@
 
         function showFav(obj) {
             $("body").find("#pop-fav").remove();
+
             var self = $(obj).parent().parent();
             $(obj).parent().parent().append("<div id='pop-fav' style='display:none'><ul>" +
             "<li><a href='javascript:void(0)' id='fav'><i class='fa fa-heart'></i> 收藏</a></li>" +
             "<li><a href='javascript:void(0)' id='fav-no'><i class='fa fa-frown-o'></i> 不感兴趣</a></li>" +
             "<li><a id='fav_close' href='javascript:void(0)'>×</a></li>" +
             "</ul></div>");
-            self.find("#pop-fav").css({width: "10px"}).show().animate({width: "183px"}, 200);
+
+            var ol = $(obj).offset().left;
+            var w = self.find("#pop-fav").innerWidth();
+            self.find("#pop-fav").css({width: "10px", left: ol}).show().animate({
+                width: "183px",
+                left: ol - w + 5
+            }, 200);
+
             self.find("#fav_close").bind('click', function () {
                 $("body").find("#pop-fav").remove();
             });
@@ -110,7 +118,7 @@
 </header>
 
 <div id="container">
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <h2>A股半天成交7000亿元 多家券商交易系统</h2>
         <ul class="img-list">
             <li>
@@ -130,7 +138,7 @@
         </div>
     </a>
 
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <h2>内蒙古原公安厅长持枪追杀女子详情披露</h2>
         <ul class="img-list">
             <li>
@@ -150,7 +158,7 @@
         </div>
     </a>
 
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <div class="img-right"><img src="http://p2.pstatp.com/list/2522/151278873"/></div>
 
         <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
@@ -162,7 +170,7 @@
         </div>
     </a>
 
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <div class="img-right"><img src="http://p1.pstatp.com/list/2551/7408484741"/></div>
 
         <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
@@ -174,7 +182,7 @@
         </div>
     </a>
 
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <h2>媒体：下只“老虎”很可能出现在意想不到的地方</h2>
 
         <div class="news_tips">
@@ -184,7 +192,7 @@
         </div>
     </a>
 
-    <a href="#" class="content-row">
+    <a href="/news/wap_con/" class="content-row">
         <h2>就是这么任性！ 苹果iPhone5c给钱就卖</h2>
 
         <div class="news_tips">
