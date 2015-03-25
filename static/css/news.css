@@ -278,7 +278,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 
 .txt-content p {
     color: #666666;
-    font-size: 13px;
+    font-size: 14px;
     width: auto;
     margin: 0;
     padding: 0;
@@ -295,6 +295,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .news-content >p {
+    text-indent: 28px;
     font-size: 14px;
     padding: 5px;
     line-height: 22px;
