@@ -14,7 +14,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     width: 100%;
     opacity: 0.9;
     position: fixed;
-    z-index: 1000000;
+    z-index: 1000;
 }
 
 #container {
@@ -39,12 +39,53 @@ ul, li, h1, h2, h3, dl, dd, dt {
     top: 6px;
 }
 
-.top-bar .avatar {
+.top-bar #avatar {
     background-color: #f74d4d;
     left: 10px;
     -webkit-border-radius: 32px;
     -moz-border-radius: 32px;
     border-radius: 32px;
+}
+
+#avatar-desc {
+    width: 280px;
+    height: 100%;
+    background-color: #222;
+    opacity: 0.95;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    display: none;
+}
+
+#avatar-desc ul {
+    padding:10px 0 0 0;
+    position: relative;
+}
+
+#avatar-desc h2 {
+    color: #fff;
+    position: relative;
+    border-bottom: #555 1px solid;
+    font-size: 14px;
+    font-weight: normal;
+    padding:20px 0 20px 10px;
+}
+
+#avatar-desc ul li {
+    color: #fff;
+    font-size:20px;
+    line-height: 50px;
+    padding:0 0 0 30px;
+    border-bottom:#000 1px solid;
+    list-style: none;
+}
+
+#avatar-desc ul li a {
+    color: #fff;
+    padding:0 0 0 15px;
+    text-decoration: none;
 }
 
 .top-bar .search {
@@ -125,7 +166,11 @@ ul, li, h1, h2, h3, dl, dd, dt {
     overflow: hidden;
 }
 
-#pop-fav ul{width:185px;white-space: nowrap;}
+#pop-fav ul {
+    width: 185px;
+    white-space: nowrap;
+}
+
 #pop-fav li {
     list-style: none;
     float: left;
@@ -246,7 +291,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     vertical-align: middle;
     padding: 0 5px;
     position: relative;
-    clear:both;
+    clear: both;
 }
 
 .content-row .news_tips .nt_left {
@@ -264,7 +309,8 @@ ul, li, h1, h2, h3, dl, dd, dt {
 }
 
 .content-row .news_tips button {
-    padding: 0;margin-left:10px;
+    padding: 0;
+    margin-left: 10px;
     cursor: pointer;
     color: #999999;
     border: 0;
@@ -292,7 +338,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     height: 30px;
     line-height: 30px;
     padding: 0 0 0 10px;
-    margin:0 0 5px 0;
+    margin: 0 0 5px 0;
     color: #555;
     border-bottom: #d8d8d8 1px solid;
     background-color: #f1f1f1;
@@ -309,7 +355,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
     width: auto;
     margin: 0 5px;
     color: #4a4a4a;
-    border:#ddd 1px solid;
+    border: #ddd 1px solid;
     background-color: #f0f0f0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
