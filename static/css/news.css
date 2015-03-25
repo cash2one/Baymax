@@ -10,6 +10,15 @@ ul, li, h1, h2, h3, dl, dd, dt {
     padding: 0;
 }
 
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
+}
+
 .header-nav {
     width: 100%;
     opacity: 0.9;
