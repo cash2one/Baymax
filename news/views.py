@@ -38,3 +38,16 @@ def result_data(request):
     response_data.append(None)
 
     return HttpResponse(json.dumps(response_data[int(page)]), content_type="application/json")
+
+def wap_new(request):
+    return render_to_response("news/wap_new.html", {"testcase": ''}, context_instance=RequestContext(request))
+
+def wap_new_json(request):
+    t = str(time.time()).split('.')[0]
+    url = 'http://m.toutiao.com/list/?tag=__all__&item_type=4&count=20&format=json&max_behot_time=%s' % t
+    req = urllib2.Request(url)
+    req.add_header('Content-type', 'application/json')
+    resp = urllib2.urlopen(req)
+    # dict= json.loads(resp.read())
+    # news_list = dict['html']
+    return HttpResponse(resp.read(), content_type="application/json")

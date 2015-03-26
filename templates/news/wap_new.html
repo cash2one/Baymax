@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/news1.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var winH = $(window).height(); //页面可视区域高度
+            var i = 1;
+            var has_load = true;
+            $(window).scroll(function () {
+                var pageH = $(document.body).height();
+                var scrollT = $(window).scrollTop(); //滚动条top
+                var sc = (pageH - winH - scrollT) / winH;
+
+                if (sc < 0.02 && has_load) {
+                    has_load = false;
+                    $.ajax({
+                        type: "GET",
+                        //url: "/news/result_data/?page=" + i,
+                        url: "/news/wap_new_json/",
+                        dataType: "json",
+                        beforeSend: function () {
+                            $("#loading-data").html("<i class='fa fa-spinner fa-spin'></i>加载中...").show();
+                        },
+                        success: function (response) {
+                            if (response) {
+                                str = response['html'];
+                                $("#container").append(str);
+                                /*$.each(response, function (index, array) {
+                                    str = "<section class='content-img1'>";
+                                    str += "<a href='/news/wap_con/' class='clearfix'>";
+                                    str += "<img src='" + array['image'] + "'/>";
+                                    str += "<h3>" + array['result'] + "</h3>";
+                                    str += "<div class='comment'><span>网易新闻</span><i class='fa fa-comment-o'>";
+                                    str += "</i><b>488</b></div></a><div class='time-action'><time>40分钟前</time>";
+                                    str += "<button class='fa fa-heart-o' onclick='showFav(this);return false'></button>";
+                                    str += "</div></section>";
+                                    $("#container").append(str);
+                                });*/
+                                i++;
+                                has_load = true;
+                                $("#loading-data").empty().hide();
+                            }
+                            else {
+                                $("#loading-data").text("没有更多的数据").show();
+                            }
+                        },
+                        error: function () {
+                            $("#loading-data").empty().hide();
+                        }
+                    });
+                }
+            });
+
+            $("#avatar").click(function (e) {
+                e.stopPropagation();
+                $("#avatar-desc").css("left", "-280px").show().animate({left: 0}, 200);
+            });
+
+            $(document).bind("click", function (e) {
+                var target = $(e.target);
+                var ava = $("#avatar-desc");
+                if (ava.is(':visible')) {
+                    ava.hide();
+                }
+            });
+
+        });
+
+        function showFav(obj) {
+            var container = $("#container");
+            container.find("#pop-fav").remove();
+
+            container.append("<div id='pop-fav' style='display:none'><ul>" +
+            "<li><a href='javascript:void(0)' id='fav'><i class='fa fa-heart'></i> 收藏</a></li>" +
+            "<li><a href='javascript:void(0)' id='fav-no'><i class='fa fa-frown-o'></i> 不感兴趣</a></li>" +
+            "<li><a id='fav_close' href='javascript:void(0)'>×</a></li>" +
+            "</ul></div>");
+
+            var ol = $(obj).offset().left;
+            var ot = $(obj).offset().top;
+            var w = container.find("#pop-fav").innerWidth();
+            container.find("#pop-fav").css({width: "10px", left: ol, top: ot - 10}).show().animate({
+                width: "180px",
+                left: ol - w + 19
+            }, 200);
+
+            container.find("#fav_close").bind('click', function () {
+                container.find("#pop-fav").remove();
+            });
+        }
+
+
+    </script>
+
+</head>
+<body>
+<header class="header-nav">
+    <div class="top-bar">
+        <a href="#" id="avatar"><i class="fa fa-user"></i></a>
+
+        <h1 class="title">今日头条</h1>
+        <a href="#" class="search"><i class="fa fa-search"></i></a>
+    </div>
+    <div class="top-menu">
+        <ul class="menu-list">
+            <li><a href="#">推荐</a></li>
+            <li><a href="#">热点</a></li>
+            <li><a href="#">社会</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">科技</a></li>
+            <li><a href="#">热点</a></li>
+            <li><a href="#">社会</a></li>
+        </ul>
+        <a href="/news/wap_menu/" class="more"><i class="fa fa-ellipsis-h"></i></a>
+    </div>
+</header>
+
+<div id="container">
+    <section class="content-img3">
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>A股半天成交7000亿元 多家券商交易系统</h3>
+            <ul class="img-list clearfix">
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/8371381749"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/5289568197"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2551/7733044917"/></div>
+                </li>
+            </ul>
+        </a>
+
+        <div class="comment">
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
+        </div>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+
+    </section>
+    <section class="content-img3">
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>内蒙古原公安厅长持枪追杀女子详情披露</h3>
+            <ul class="img-list">
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2559/5820993984"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2543/7711884412"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2556/2263086381"/></div>
+                </li>
+            </ul>
+        </a>
+
+        <div class="comment">
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
+        </div>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+
+    </section>
+    <section class="content-img1">
+        <a href="/news/wap_con/" class="clearfix">
+            <img src="http://p2.pstatp.com/list/2522/151278873"/>
+
+            <h3>欧洲打击中国人非法卖淫及人口贩卖</h3>
+
+            <div class="comment">
+                <span>网易新闻</span>
+                <i class="fa fa-comment-o"></i>
+                <b>488</b>
+            </div>
+        </a>
+
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+    </section>
+    <section class="content-img1">
+        <a href="/news/wap_con/" class="clearfix">
+            <img src="http://p1.pstatp.com/list/2551/7408484741"/>
+
+            <h3>A股半天成交7000亿元 多家券商交易系统瘫痪</h3>
+
+            <div class="comment">
+                <span>网易新闻</span>
+                <i class="fa fa-comment-o"></i>
+                <b>488</b>
+            </div>
+        </a>
+
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+    </section>
+    <section class="content-img0">
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>媒体：下只“老虎”很可能出现在意想不到的地方</h3>
+        </a>
+
+        <div class="comment">
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
+        </div>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+    </section>
+    <section class="content-img0">
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>就是这么任性！ 苹果iPhone5c给钱就卖</h3>
+        </a>
+
+        <div class="comment">
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
+        </div>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+        </div>
+    </section>
+</div>
+<div id="loading-data"></div>
+<div id="avatar-desc">
+    <h3>登录后，将给你推荐更多感兴趣的文章</h3>
+    <ul>
+        <li><i class="fa fa-search"></i><a href="#">搜索</a></li>
+        <li><i class="fa fa-comments"></i><a href="#">反馈</a></li>
+        <li><i class="fa fa-info-circle"></i><a href="#">关于</a></li>
+        <li><i class="fa fa-leaf"></i><a href="#">合作</a></li>
+    </ul>
+</div>
+</body>
+</html>
