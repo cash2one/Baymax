@@ -21,24 +21,26 @@
                     has_load = false;
                     $.ajax({
                         type: "GET",
-                        url: "/news/result_data/?page=" + i,
-                        dataType: "json",
+                        //url: "/news/result_data/?page=" + i,
+                        url: "/news/wap_result/",
+                        //dataType: "json",
                         beforeSend: function () {
                             $("#loading-data").html("<i class='fa fa-spinner fa-spin'></i>加载中...").show();
                         },
                         success: function (response) {
                             if (response) {
-                                $.each(response, function (index, array) {
-                                    str = "<a href='#' class='content-row'>";
-                                    str += "<div class='img-right'><img src='" + array['image'] + "'/></div>";
-                                    str += "<div class='txt-content'>";
-                                    str += "<h2>" + array['result'] + "</h2>";
-                                    str += "<div class='news_tips'>";
-                                    str += "<span class='nt_left'>网易新闻<i class='fa fa-comment-o'></i> 488</span>";
-                                    str += "<span class='nt_right'>40分钟前 <button class='fa fa-heart-o' onclick='showFav(this);return false'>";
-                                    str += "</button></span></div></div></a>";
-                                    $("#container").append(str);
-                                });
+                                $("#container").append(response);
+                                /*$.each(response, function (index, array) {
+                                 str = "<section class='content-img1'>";
+                                 str += "<a href='/news/wap_con/' class='clearfix'>";
+                                 str += "<img src='" + array['image'] + "'/>";
+                                 str += "<h3>" + array['result'] + "</h3>";
+                                 str += "<div class='comment'><span>网易新闻</span><i class='fa fa-comment-o'>";
+                                 str += "</i><b>488</b></div></a><div class='time-action'><time>40分钟前</time>";
+                                 str += "<button class='fa fa-heart-o' onclick='showFav(this);return false'></button>";
+                                 str += "</div></section>";
+                                 $("#container").append(str);
+                                 });*/
                                 i++;
                                 has_load = true;
                                 $("#loading-data").empty().hide();
@@ -49,6 +51,7 @@
                         },
                         error: function () {
                             $("#loading-data").empty().hide();
+                            has_load = true;
                         }
                     });
                 }
@@ -70,24 +73,25 @@
         });
 
         function showFav(obj) {
-            $("body").find("#pop-fav").remove();
+            var container = $("#container");
+            container.find("#pop-fav").remove();
 
-            var self = $(obj).parent().parent();
-            $(obj).parent().parent().append("<div id='pop-fav' style='display:none'><ul>" +
+            container.append("<div id='pop-fav' style='display:none'><ul>" +
             "<li><a href='javascript:void(0)' id='fav'><i class='fa fa-heart'></i> 收藏</a></li>" +
             "<li><a href='javascript:void(0)' id='fav-no'><i class='fa fa-frown-o'></i> 不感兴趣</a></li>" +
             "<li><a id='fav_close' href='javascript:void(0)'>×</a></li>" +
             "</ul></div>");
 
             var ol = $(obj).offset().left;
-            var w = self.find("#pop-fav").innerWidth();
-            self.find("#pop-fav").css({width: "10px", left: ol}).show().animate({
-                width: "183px",
-                left: ol - w + 5
+            var ot = $(obj).offset().top;
+            var w = container.find("#pop-fav").innerWidth();
+            container.find("#pop-fav").css({width: "10px", left: ol, top: ot - 10}).show().animate({
+                width: "180px",
+                left: ol - w + 19
             }, 200);
 
-            self.find("#fav_close").bind('click', function () {
-                $("body").find("#pop-fav").remove();
+            container.find("#fav_close").bind('click', function () {
+                container.find("#pop-fav").remove();
             });
         }
 
@@ -100,7 +104,7 @@
     <div class="top-bar">
         <a href="#" id="avatar"><i class="fa fa-user"></i></a>
 
-        <div class="title">今日头条</div>
+        <h1 class="title">今日头条</h1>
         <a href="#" class="search"><i class="fa fa-search"></i></a>
     </div>
     <div class="top-menu">
@@ -118,93 +122,128 @@
 </header>
 
 <div id="container">
-    <a href="/news/wap_con/" class="content-row">
-        <h2>A股半天成交7000亿元 多家券商交易系统</h2>
-        <ul class="img-list">
-            <li>
-                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/8371381749"/></div>
-            </li>
-            <li>
-                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/5289568197"/></div>
-            </li>
-            <li>
-                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2551/7733044917"/></div>
-            </li>
-        </ul>
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                 onclick="showFav(this);return false"></button></span>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>A股半天成交7000亿元 多家券商交易系统</h3>
+            <ul class="img-list clearfix">
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/8371381749"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2541/5289568197"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2551/7733044917"/></div>
+                </li>
+            </ul>
+        </a>
+
+        <div class="comment-tips">
+            <div class="time-action">
+                <time>40分钟前</time>
+                <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+            </div>
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
         </div>
-    </a>
+    </section>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>内蒙古原公安厅长持枪追杀女子详情披露</h3>
+            <ul class="img-list">
+                <li>
+                    <div class="img-wrap"><img src="http://p2.pstatp.com/list/2559/5820993984"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2543/7711884412"/></div>
+                </li>
+                <li>
+                    <div class="img-wrap"><img src="http://p1.pstatp.com/list/2556/2263086381"/></div>
+                </li>
+            </ul>
+        </a>
 
-    <a href="/news/wap_con/" class="content-row">
-        <h2>内蒙古原公安厅长持枪追杀女子详情披露</h2>
-        <ul class="img-list">
-            <li>
-                <div class="img-wrap"><img src="http://p2.pstatp.com/list/2559/5820993984"/></div>
-            </li>
-            <li>
-                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2543/7711884412"/></div>
-            </li>
-            <li>
-                <div class="img-wrap"><img src="http://p1.pstatp.com/list/2556/2263086381"/></div>
-            </li>
-        </ul>
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                 onclick="showFav(this);return false"></button></span>
+        <div class="comment-tips">
+            <div class="time-action">
+                <time>40分钟前</time>
+                <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+            </div>
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
         </div>
-    </a>
+    </section>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <img src="http://p2.pstatp.com/list/2522/151278873" class="imgr"/>
 
-    <a href="/news/wap_con/" class="content-row">
-        <div class="img-right"><img src="http://p2.pstatp.com/list/2522/151278873"/></div>
+            <h3>欧洲打击中国人非法卖淫及人口贩卖</h3>
 
-        <h2>欧洲打击中国人非法卖淫及人口贩卖</h2>
+            <div class="comment-tips">
+                <span>网易新闻</span>
+                <i class="fa fa-comment-o"></i>
+                <b>488</b>
+            </div>
+        </a>
 
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                     onclick="showFav(this);return false"></button></span>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
         </div>
-    </a>
+    </section>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <img src="http://p1.pstatp.com/list/2551/7408484741" class="imgr"/>
 
-    <a href="/news/wap_con/" class="content-row">
-        <div class="img-right"><img src="http://p1.pstatp.com/list/2551/7408484741"/></div>
+            <h3>A股半天成交7000亿元 多家券商交易系统瘫痪</h3>
 
-        <h2>A股半天成交7000亿元 多家券商交易系统瘫痪</h2>
+            <div class="comment-tips">
+                <span>网易新闻</span>
+                <i class="fa fa-comment-o"></i>
+                <b>488</b>
+            </div>
+        </a>
 
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                 onclick="showFav(this);return false"></button></span>
+        <div class="time-action">
+            <time>40分钟前</time>
+            <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
         </div>
-    </a>
+    </section>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>媒体：下只“老虎”很可能出现在意想不到的地方</h3>
+        </a>
 
-    <a href="/news/wap_con/" class="content-row">
-        <h2>媒体：下只“老虎”很可能出现在意想不到的地方</h2>
-
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-                <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                     onclick="showFav(this);return false"></button></span>
+        <div class="comment-tips">
+            <div class="time-action">
+                <time>40分钟前</time>
+                <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+            </div>
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
         </div>
-    </a>
+    </section>
+    <section>
+        <a href="/news/wap_con/" class="clearfix">
+            <h3>就是这么任性！ 苹果iPhone5c给钱就卖</h3>
+        </a>
 
-    <a href="/news/wap_con/" class="content-row">
-        <h2>就是这么任性！ 苹果iPhone5c给钱就卖</h2>
-
-        <div class="news_tips">
-            <span class="nt_left">网易新闻<i class="fa fa-comment-o"></i> 488</span>
-            <span class="nt_right">40分钟前 <button class="fa fa-heart-o"
-                                                 onclick="showFav(this);return false"></button></span>
+        <div class="comment-tips">
+            <div class="time-action">
+                <time>40分钟前</time>
+                <button class="fa fa-heart-o" onclick="showFav(this);return false"></button>
+            </div>
+            <span>网易新闻</span>
+            <i class="fa fa-comment-o"></i>
+            <b>488</b>
         </div>
-    </a>
+    </section>
 </div>
 <div id="loading-data"></div>
 <div id="avatar-desc">
-    <h2>登录后，将给你推荐更多感兴趣的文章</h2>
+    <h3>登录后，将给你推荐更多感兴趣的文章</h3>
     <ul>
         <li><i class="fa fa-search"></i><a href="#">搜索</a></li>
         <li><i class="fa fa-comments"></i><a href="#">反馈</a></li>

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
     margin: 0;
     padding: 0;
@@ -21,7 +23,7 @@ ul, li, h1, h2, h3, dl, dd, dt {
 
 .header-nav {
     width: 100%;
-    opacity: 0.9;
+    opacity: 0.95;
     position: fixed;
     z-index: 1000;
 }
@@ -211,29 +213,74 @@ ul, li, h1, h2, h3, dl, dd, dt {
     border-left: #7a7a7a 1px solid;
 }
 
-.content-row {
-    display: block;
-    overflow: auto;
-    border-bottom: #e1e1e1 1px solid;
-    padding: 10px;
-    clear: both;
+#avatar-desc {
+    width: 280px;
+    height: 100%;
+    background-color: #222;
+    opacity: 0.95;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    display: none;
+}
+
+#avatar-desc ul {
+    padding: 10px 0 0 0;
+    position: relative;
+}
+
+#avatar-desc h2 {
+    color: #fff;
+    position: relative;
+    border-bottom: #555 1px solid;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 20px 0 20px 10px;
+}
+
+#avatar-desc ul li {
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0 0 0 30px;
+    border-bottom: #000 1px solid;
+    list-style: none;
+}
+
+#avatar-desc ul li a {
+    color: #fff;
+    padding: 0 0 0 15px;
     text-decoration: none;
 }
 
-.content-row h2 {
+#container {
+    position: relative;
+}
+
+#container section {
+    display: block;
+    overflow: auto;
+    border-bottom: #efefef 1px solid;
+    padding: 10px 5px;
+    clear: both;
+    position: relative;
+}
+
+#container section > a {
+    display: block;
+    overflow: auto;
+    text-decoration: none;
+}
+
+#container section > a > h3 {
     font-size: 18px;
     padding: 0 0 5px 6px;
     color: #4d4d4d;
     font-weight: normal;
-    position: relative;
 }
 
-.content-row ul.img-list {
-    overflow: auto;
-    clear: both;
-}
-
-.content-row ul.img-list > li {
+#container section a > ul.img-list > li {
     width: 33.33333%;
     list-style: none;
     display: inline-block;
@@ -241,90 +288,81 @@ ul, li, h1, h2, h3, dl, dd, dt {
     float: left;
 }
 
-.content-row ul.img-list .img-wrap {
+#container section a > ul.img-list > li > .img-wrap {
     width: auto;
     padding: 0 6px;
-    text-align: left;
 }
 
-.content-row ul.img-list .img-wrap img {
+#container section a > ul.img-list > li img {
     border: 0;
     width: 100%;
 }
 
-.content-row .img-right {
+#container section a > img.imgr {
     width: 25%;
     margin-left: 10px;
     float: right;
 }
 
-.content-row .img-right > img {
-    width: 100%;
-    border: 0;
-}
-
-.content-row .txt-content {
-    width: auto;
-}
-
-.txt-content p {
-    color: #666666;
-    font-size: 14px;
-    width: auto;
-    margin: 0;
-    padding: 0;
-}
-
-.news-content {
-    overflow: auto;
-    padding: 10px;
-}
-
-.news-content > h1 {
-    font-size: 22px;
-    padding: 0 5px 10px 5px;
-}
-
-.news-content > p {
-    padding: 5px;
-}
-
-.news-content img {
-    max-width: 100%;
-}
-
 .news_tips {
-    height: 22px;
-    line-height: 22px;
-    color: #999999;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
     font-size: 12px;
     vertical-align: middle;
     padding: 0 5px;
+}
+
+.comment-tips {
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 0 0 6px;
+    font-size: 12px;
+    color: #999999;
     position: relative;
 }
 
-.news_tips .nt_left {
-    overflow: auto;
-    float: left;
+.comment-tips > i {
+    margin-left: 10px;
 }
 
-.news_tips .nt_right {
-    overflow: auto;
-    float: right;
+.comment-tips > b {
+    font-weight: normal;
 }
 
-.news_tips > span > i {
-    padding: 0 0 0 10px;
+.time-action {
+    height: 20px;
+    line-height: 20px;
+    text-align: right;
+    position: absolute;
+    bottom: 10px;
+    right: 26%;
 }
 
-.news_tips button {
-    padding: 0;
-    margin-left: 8px;
-    cursor: pointer;
+.time-action > time {
+    display: none;
+}
+
+.time-action > button {
+    font-size: 12px;
     color: #999999;
     border: 0;
+    padding: 0;
+    margin: 0 6px 0 10px;
     background-color: transparent;
-    text-decoration: none;
+    cursor: pointer;
+}
+
+.comment-tips .time-action {
+    float: right;
+    position: static;
+}
+
+.comment-tips .time-action time {
+    font-size: 12px;
+    color: #999999;
+    display: inline;
 }
 
 #loading-data {
