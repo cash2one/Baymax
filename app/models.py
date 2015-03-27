@@ -6,8 +6,8 @@ from django.db import models
 # 如果为True，空值将会被存储为NULL，默认为False。
 #
 # blank：
-#     If True, the field is allowed to be blank. Default is False.
-#     如果为True，字段允许为空，默认不允许。
+# If True, the field is allowed to be blank. Default is False.
+# 如果为True，字段允许为空，默认不允许。
 
 class AppUser(models.Model):
     UserName = models.CharField(max_length=50)
@@ -23,7 +23,7 @@ class DeviceModule(models.Model):
     IsEnable = models.BooleanField(default=True)
     CreateTime = models.DateTimeField(null=True)
     UpdateTime = models.DateTimeField(null=True)
-    Description = models.TextField(null=True,blank=True)
+    Description = models.TextField(null=True, blank=True)
 
 
 class TestCase(models.Model):
@@ -31,25 +31,25 @@ class TestCase(models.Model):
     TestCaseName = models.CharField(max_length=50)
     DisplayName = models.CharField(max_length=50)
     ExecuteCount = models.IntegerField()
-    ActivityValue = models.TextField(blank=True)
-    TestCaseAction = models.CharField(max_length=100, blank=True)
-    TestCaseEntity = models.CharField(max_length=100, blank=True)
+    ActivityValue = models.TextField(null=True, blank=True)
+    TestCaseAction = models.CharField(max_length=100, null=True, blank=True)
+    TestCaseEntity = models.CharField(max_length=100, null=True, blank=True)
     IsEnable = models.BooleanField(default=True)
     CreateTime = models.DateTimeField(null=True)
     UpdateTime = models.DateTimeField(null=True)
-    Description = models.TextField(blank=True)
-    AloneUse = models.CharField(max_length=50, blank=True)
+    Description = models.TextField(null=True, blank=True)
+    AloneUse = models.CharField(max_length=50, null=True, blank=True)
     IsJoin = models.BooleanField(default=True)
 
 
 class Task(models.Model):
     TaskName = models.CharField(max_length=50)
-    TaskType = models.IntegerField(null=True)
+    TaskType = models.IntegerField(default=1)
     TaskCount = models.IntegerField()
     TaskState = models.IntegerField()
     Creator = models.ForeignKey(AppUser)
     DeviceType = models.CharField(max_length=50)
-    Description = models.TextField(null=True,blank=True)
+    Description = models.TextField(null=True, blank=True)
     CreateTime = models.DateTimeField()
     UpdateTime = models.DateTimeField()
     CreateWay = models.CharField(max_length=50)
@@ -59,12 +59,12 @@ class Task(models.Model):
 class Result(models.Model):
     TaskId = models.ForeignKey(Task)
     TestCaseId = models.ForeignKey(TestCase)
-    DeviceId = models.CharField(max_length=50, blank=True)
-    TestResult = models.TextField(blank=True)
-    StartTime = models.DateTimeField(blank=True)
-    EndTime = models.DateTimeField(blank=True)
+    DeviceId = models.CharField(max_length=50, null=True, blank=True)
+    TestResult = models.TextField(null=True, blank=True)
+    StartTime = models.DateTimeField(null=True)
+    EndTime = models.DateTimeField(null=True)
     TestResultFile = models.CharField(max_length=50)
     ResultCount = models.IntegerField()
-    ValueSettings = models.TextField(blank=True)
+    ValueSettings = models.TextField(null=True, blank=True)
     IsEnable = models.BooleanField(default=True)
 
