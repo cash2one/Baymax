@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Baymax</title>
+    <title>Woodpecker</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/default.css">
@@ -17,7 +17,7 @@
             <div class="col-md-2 brand">
                 <a href="#">
                     <i class="fa fa-paper-plane"></i>
-                    <span>Baymax</span>
+                    <span>Woodpecker</span>
                 </a>
                 <a id="main-menu-toggle" class="hidden-xs open"><i class="fa fa-bars"></i></a>
             </div>
@@ -41,7 +41,7 @@
                             <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
-                            <li><a href="/app/logout/"><i class="fa fa-off"></i> Logout</a></li>
+                            <li><a href="/woodpecker/logout/"><i class="fa fa-off"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -57,7 +57,7 @@
             <div class="col-md-2" id="sidebar">
                 <ul class="nav nav-tabs nav-stacked">
                     <li>
-                        <a href="/app/task/">
+                        <a href="/woodpecker/task/">
                             <i class="fa fa-tasks"></i> <span>Task</span>
                             <span class="badge bg-red">8</span>
                         </a>
@@ -69,7 +69,7 @@
                             <span>TestCase</span>
                             <i class="fa fa-angle-right pull-right"></i>
                         </a>
-                        {% if '/app/testcase' in url_path %}
+                        {% if '/woodpecker/testcase' in url_path %}
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                                  aria-labelledby="headingOne">
                         {% else %}
@@ -77,7 +77,7 @@
                                  aria-labelledby="headingOne">
                         {% endif %}
                         <ul class="list-group">
-                            <li><a href="/app/testcase/">Web</a></li>
+                            <li><a href="/woodpecker/testcase/">Web</a></li>
                             <li><a href="#">Android</a></li>
                             <li><a href="#">iOS</a></li>
                             <li><a href="#">Device</a></li>
@@ -90,7 +90,7 @@
                             <i class="fa fa-briefcase"></i> <span>Module</span>
                             <i class="fa fa-angle-right pull-right"></i>
                         </a>
-                        {% if '/app/device' in url_path %}
+                        {% if '/woodpecker/device' in url_path %}
                             <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
                                  aria-labelledby="headingTwo">
                         {% else %}
@@ -99,10 +99,10 @@
                         {% endif %}
 
                         <ul class="list-group">
-                            <li><a href="/app/device/?module=web">Web</a></li>
-                            <li><a href="/app/device/?module=android">Android</a></li>
-                            <li><a href="/app/device/?module=ios">iOS</a></li>
-                            <li><a href="/app/device/?module=device">Device</a></li>
+                            <li><a href="/woodpecker/device/?module=web">Web</a></li>
+                            <li><a href="/woodpecker/device/?module=android">Android</a></li>
+                            <li><a href="/woodpecker/device/?module=ios">iOS</a></li>
+                            <li><a href="/woodpecker/device/?module=device">Device</a></li>
                         </ul>
                         </div>
                     </li>
