@@ -1,5 +1,5 @@
 """
-Django settings for TestManager project.
+Django settings for Baymax project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
+    'woodpecker',
     'news',
 )
 
@@ -65,9 +65,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testmanager',
+        'NAME': 'baymax',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'root2158',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

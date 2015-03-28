@@ -1,2 +1,2 @@
-# TestManager
+# Baymax
 autotest manager platform

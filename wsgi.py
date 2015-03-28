@@ -1,5 +1,5 @@
 """
-WSGI config for TestManager project.
+WSGI config for Baymax project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
