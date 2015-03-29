@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Woodpecker</title>
+    <title>MyBlog</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/blog.css">
@@ -15,15 +15,26 @@
 <header class="header-nav">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2"><h1>ggh.io</h1></div>
-            <div class="col-lg-10">menu</div>
+            <div class="col-lg-5 logo">MyBlog</div>
+            <div class="col-lg-5">
+                <ul>
+                    <li><i class="fa fa-home"></i> 首页</li>
+                    <li><i class="fa fa-book"></i> 博客</li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
-<ul>
-    <li>woodpecker</li>
-</ul>
-{% block content %}
-{% endblock %}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-lg-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="col-lg-4">f</div>
+    </div>
+</div>
+
 </body>
 </html>
