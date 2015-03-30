@@ -7,9 +7,6 @@ from .models import Task, TestCase, AppUser, DeviceModule
 
 
 class DeviceModuleViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = DeviceModule.objects.all()
     serializer_class = serializer.DeviceSerializer
 
