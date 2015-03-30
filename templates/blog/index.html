@@ -1,4 +1,16 @@
 {% extends "base_blog.html" %}
 {% block content %}
-    <h1 class="ddd">hello</h1>
+    {% for art in articles %}
+        <section>
+            <h3>{{ art.Title }}</h3>
+            <ul>
+                <li>{{ art.PostTime }}</li>
+                <li>{{ art.ArticleTypeId }}</li>
+                <li>{{ art.ReplyNum }}</li>
+                <li>{{ art.ReadNum }}</li>
+                <li>{{ art.Tags }}</li>
+            </ul>
+            <p>{{ art.Content }}</p>
+        </section>
+    {% endfor %}
 {% endblock %}
