@@ -44,16 +44,16 @@ class TestCase(models.Model):
 
 class Task(models.Model):
     TaskName = models.CharField(max_length=50)
-    TaskType = models.IntegerField(default=1)
+    TaskType = models.IntegerField(default=1)  # 1、串行，2、并行
     TaskCount = models.IntegerField()
     TaskState = models.IntegerField()
     Creator = models.ForeignKey(AppUser)
-    DeviceType = models.CharField(max_length=50)
+    DeviceType = models.IntegerField(default=1)  # 1、web app，2、android，3、iOS
     Description = models.TextField(null=True, blank=True)
     CreateTime = models.DateTimeField()
     UpdateTime = models.DateTimeField()
-    CreateWay = models.CharField(max_length=50)
-    IsShared = models.BooleanField(default=1)
+    CreateWay = models.IntegerField(default=1)  # 任务有在app上创建和web上创建
+    IsShared = models.BooleanField(default=1)  # 是否共享
 
 
 class Result(models.Model):

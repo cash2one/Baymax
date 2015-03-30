@@ -17,7 +17,7 @@
                     </button>
                     <button type="button" class="btn btn-default"><i class="fa fa-trash"></i> Delete
                     </button>
-                    <button type="button" class="btn btn-default">More</button>
+                    <button type="button" class="btn btn-default">Push</button>
                 </div>
                 <nav>
                     <ul class="pagination pagination-sm">
@@ -51,7 +51,6 @@
                 <th>设备类型</th>
                 <th>创建时间</th>
                 <th>更新时间</th>
-                <th>创建方式</th>
                 <th>备注</th>
             </tr>
             {% for task in tasks %}
@@ -65,7 +64,6 @@
                     <td>{{ task.DeviceType }}</td>
                     <td>{{ task.CreateTime }}</td>
                     <td>{{ task.UpdateTime }}</td>
-                    <td>{{ task.CreateWay }}</td>
                     <td>{{ task.Desc }}</td>
                 </tr>
             {% endfor %}
