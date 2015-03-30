@@ -4,11 +4,14 @@ body {
     font-family: "Microsoft YaHei"
 }
 
-h1,h2,h3,ul,li,p{margin:0;padding:0;}
+h1, h2, h3, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
 
 .bing {
     width: 100%;
-    height: 220px;
+    height: 60px;
     background-position: center top;
     background-repeat: no-repeat;
     position: absolute;
@@ -20,13 +23,34 @@ h1,h2,h3,ul,li,p{margin:0;padding:0;}
 
 .header-nav {
     width: auto;
-    height: 50px;
-    margin: 50px 100px;
+    height: 60px;
+    line-height: 60px;
     background-color: #fff;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    opacity: 0.9;
+    /*    -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;*/
+    border-top: #ff2121 3px solid;
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
 }
 
-.header-nav h1{font-size:16px;}
+.header-nav h1 {
+    font-size: 16px;
+}
+
+.header-nav .row {
+    position: relative;
+}
+
+.header-nav .logo {
+    text-align: center;
+}
+
+.header-nav .row > div > ul > li {
+    list-style: none;
+    font-size: 15px;
+    color:#555;
+    float: left;
+}
+
+.main-content{}
