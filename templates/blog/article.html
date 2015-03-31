@@ -1,0 +1,16 @@
+{% extends "base_blog.html" %}
+{% block content %}
+    <article>
+        <h3>{{ art.Title }}</h3>
+        <ul>
+            <li>{{ art.PostTime }}</li>
+            <li>{{ art.ReplyNum }}</li>
+            <li>{{ art.ReadNum }}</li>
+            <li>{{ art.Tags }}</li>
+        </ul>
+        <p>{{ art.Content }}</p>
+    </article>
+    <div class="comments">
+
+    </div>
+{% endblock %}

@@ -32,14 +32,22 @@ def post_article(request):
             Description = cd['Description']
             ReplyNum = 3
             ReadNum = 2
-            Property = 1
+            Status = 1
             Tags = cd['Tags']
 
             article = Article(Title=Title, ArticleTypeId=ArticleTypeId, Content=Content, ReplyNum=ReplyNum,
-                              ReadNum=ReadNum, Property=Property, Tags=Tags, Description=Description)
+                              ReadNum=ReadNum, Status=Status, Tags=Tags, Description=Description)
             article.save()
             return HttpResponseRedirect('/')
     else:
         form = forms.ArticleForm()
     return render_to_response('blog/post.html', {'bing': bing, 'form': form},
+                              context_instance=RequestContext(request))
+
+
+def article_detail(request, id):
+    art = Article.objects.get(id=id)
+    bing = utils.getBingImg('http://cn.bing.com/')
+
+    return render_to_response('blog/article.html', {'bing': bing, 'art': art},
                               context_instance=RequestContext(request))

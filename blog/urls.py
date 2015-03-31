@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^$', 'blog.views.home'),
     url(r'^home/$', 'blog.views.home'),
     url(r'^post/$', 'blog.views.post_article'),
+    url(r'^article/(?P<id>\d+)/$', 'blog.views.article_detail'),
 
 )
