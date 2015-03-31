@@ -87,7 +87,7 @@ li {
 }
 
 a:hover {
-    color: #fff;
+    color: #fff !important;
     background-color: #dc1941;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
