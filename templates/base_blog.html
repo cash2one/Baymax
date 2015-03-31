@@ -13,28 +13,39 @@
 </head>
 <body>
 <header class="header-nav">
-    <div class="container-fluid">
+    <div class="container nav">
         <div class="row">
-            <div class="col-sm-5 logo">MyBlog</div>
-            <div class="col-sm-7">
+            <div class="col-sm-3 logo">MyBlog</div>
+            <div class="col-sm-9 menu">
                 <ul>
-                    <li><i class="fa fa-home"></i> 首页</li>
-                    <li><i class="fa fa-book"></i> 博客</li>
+                    <li><i class="fa fa-home"></i><a href="#">首页</a></li>
+                    <li><i class="fa fa-book"></i><a href="#">博客</a></li>
+                    <li><i class="fa fa-paper-plane"></i><a href="/woodpecker/">Woodpecker</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
 
-<div class="container-fluid main-content">
+<div class="container main-content">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9 article-list">
             {% block content %}
             {% endblock %}
         </div>
-        <div class="col-lg-4">f</div>
+        <div class="col-lg-3 sidebar">
+            <h3>最新文章</h3>
+            <ul>
+                <li>ggeweg</li>
+            </ul>
+            <h3>文章分类</h3>
+            <ul>
+                <li>ggeweg</li>
+            </ul>
+        </div>
     </div>
 </div>
-
+<div class="bing" style="background-image:url({{ bing }});"></div>
+<div class="bing-cover"></div>
 </body>
 </html>

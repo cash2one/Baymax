@@ -1,0 +1,26 @@
+[
+  {
+    "fields": {
+      "TypeName": "django",
+      "TypeDescription": "cc"
+    },
+    "model": "blog.articletype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "TypeName": "javascript",
+      "TypeDescription": "dd"
+    },
+    "model": "blog.articletype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "TypeName": "随笔",
+      "TypeDescription": "ee"
+    },
+    "model": "blog.articletype",
+    "pk": 3
+  }
+]
