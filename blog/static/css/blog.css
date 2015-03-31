@@ -33,7 +33,6 @@ li {
     background-color: rgba(255, 255, 255, 0.5) !important;
     background-color: #fff;
     filter: Alpha(opacity=50);
-    border-top:#dc1941 1px solid;
 }
 
 .nav {
@@ -43,9 +42,8 @@ li {
 
 }
 
-
 .nav h1 {
-    padding:5px 0 0 0;
+    padding: 5px 0 0 0;
     text-align: left;
     font-size: 32px;
     font-weight: normal;
@@ -53,7 +51,11 @@ li {
     position: relative;
 }
 
-.nav em{font-size:12px;font-style: normal;color:#333;}
+.nav em {
+    font-size: 12px;
+    font-style: normal;
+    color: #333;
+}
 
 .nav .row .menu > ul {
     padding: 15px 0 0 0;
@@ -84,7 +86,7 @@ li {
     margin-right: 5px;
 }
 
-.nav .row > div.menu > ul > li > a:hover {
+a:hover {
     color: #fff;
     background-color: #dc1941;
     -webkit-border-radius: 3px;
@@ -127,6 +129,11 @@ li {
     font-size: 22px;
     color: #555;
     padding: 5px 0;
+}
+
+.article-list section h3 > a {
+    color: #555;
+    text-decoration: none;
 }
 
 .article-list section > ul {
