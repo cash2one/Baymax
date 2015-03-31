@@ -14,7 +14,7 @@ class Article(models.Model):
     Content = models.TextField(null=True, blank=True)
     ReplyNum = models.IntegerField(default=0)
     ReadNum = models.IntegerField(default=0)
-    Property = models.IntegerField(default=0)
+    Status = models.IntegerField(default=0)
     Tags = models.CharField(max_length=150)
     Description = models.TextField(null=True, blank=True)
 
@@ -27,5 +27,10 @@ class Comment(models.Model):
     ReplyContent = models.TextField(null=True, blank=True)
     ReplyTime = models.DateTimeField()
     FromIp = models.CharField(max_length=20, null=True, blank=True)
-    Property = models.IntegerField(default=0)
+    Status = models.IntegerField(default=0)
     CreateTime = models.DateTimeField()
+
+
+class Tags(models.Model):
+    ArticleId = models.ForeignKey(Article)
+    TagName = models.CharField(max_length=50)
