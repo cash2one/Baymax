@@ -113,7 +113,7 @@ li {
 }
 
 .article-list {
-    padding:0 20px 0 0;
+    padding: 0 20px 0 0;
     min-height: 500px;
 }
 
@@ -132,7 +132,11 @@ li {
     padding: 20px;
 }
 
-.article-list section{background-color: #fff;overflow: auto;padding:30px;}
+.article-list section {
+    background-color: #fff;
+    overflow: auto;
+    padding: 30px;
+}
 
 .article-list section h3 {
     font-size: 20px;
@@ -158,4 +162,23 @@ li {
     line-height: 20px;
     text-indent: 28px;
     font-size: 14px;
+}
+
+form.art {
+    background-color: #fff;
+    padding: 30px;
+}
+
+form.art > h3 {
+    padding: 0 0 15px 0;
+}
+
+form.art li {
+    padding: 0 0 10px 0;
+}
+
+form.art label {width:60px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
 }

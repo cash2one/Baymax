@@ -1,0 +1,16 @@
+{% extends "base_blog.html" %}
+{% block content %}
+    <form action="" method="post" class="form-inline art">
+        {% csrf_token %}
+        <h3>发布文章</h3>
+        <ul class="post-article">
+            <li><label>标题：</label>{{ form.Title }}</li>
+            <li><label>内容：</label>{{ form.Content }}</li>
+            <li><label>标签：</label>{{ form.Tags }}</li>
+            <li><label>&nbsp;</label>
+                <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </li>
+        </ul>
+    </form>
+{% endblock %}
