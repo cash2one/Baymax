@@ -16,6 +16,7 @@ class Article(models.Model):
     ReadNum = models.IntegerField(default=0)
     Property = models.IntegerField(default=0)
     Tags = models.CharField(max_length=150)
+    Description = models.TextField(null=True, blank=True)
 
 
 class Comment(models.Model):
