@@ -8,7 +8,13 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import utils, forms
-from .models import Article, ArticleType, Comment
+from .models import Article, ArticleType, Comment,Tags
+
+
+def show_sidebar():
+    arts = Article.objects.all()
+    art_type = ArticleType.objects.all()
+    tags = Tags.objects.all()
 
 
 def home(request):
