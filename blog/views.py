@@ -8,13 +8,16 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import utils, forms
-from .models import Article, ArticleType, Comment,Tags
+from .models import Article, ArticleType, Comment, Tags
+import time
 
 
 def show_sidebar():
     arts = Article.objects.all()
     art_type = ArticleType.objects.all()
     tags = Tags.objects.all()
+
+    return arts, art_type, tags
 
 
 def home(request):
@@ -29,6 +32,7 @@ def post_article(request):
     if request.method == 'POST':
         form = forms.ArticleForm(request.POST)
         if form.is_valid():
+            No = str(time.time()).replace('.', '')
             cd = form.cleaned_data
             Title = cd['Title']
             ArticleTypeId = ArticleType.objects.get(id=1)
@@ -39,7 +43,8 @@ def post_article(request):
             Status = 1
             Tags = cd['Tags']
 
-            article = Article(Title=Title, ArticleTypeId=ArticleTypeId, Content=Content, ReplyNum=ReplyNum,
+            article = Article(No=No, Title=Title, ArticleTypeId=ArticleTypeId, Content=Content,
+                              ReplyNum=ReplyNum,
                               ReadNum=ReadNum, Status=Status, Tags=Tags, Description=Description)
             article.save()
             return HttpResponseRedirect('/')
@@ -49,8 +54,8 @@ def post_article(request):
                               context_instance=RequestContext(request))
 
 
-def article_detail(request, id):
-    art = Article.objects.get(id=id)
+def article_detail(request, no):
+    art = Article.objects.get(No=no)
 
     return render_to_response('blog/article.html', {'art': art},
                               context_instance=RequestContext(request))

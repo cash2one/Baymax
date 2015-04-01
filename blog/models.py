@@ -7,6 +7,7 @@ class ArticleType(models.Model):
 
 
 class Article(models.Model):
+    No = models.CharField(max_length=20)
     Title = models.CharField(max_length=150)
     ArticleTypeId = models.ForeignKey(ArticleType)
     PostTime = models.DateTimeField(auto_now_add=True)

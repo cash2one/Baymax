@@ -36,6 +36,12 @@ def get_dominant_color(image):
             dominant_color = (r, g, b)
     return dominant_color
 
+def times():
+    import time
+    t =time.time()
+    return t
+
 if __name__ == "__main__":
-    from PIL import Image
-    print get_dominant_color(Image.open(PATH('./static/img/avatar.jpg')))
+    #from PIL import Image
+    #print get_dominant_color(Image.open(PATH('./static/img/avatar.jpg')))
+    print times()
