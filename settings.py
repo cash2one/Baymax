@@ -77,7 +77,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'baymax',
         'USER': 'root',
-        'PASSWORD': 'root2158',
+        'PASSWORD': 'ro0oT123',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
