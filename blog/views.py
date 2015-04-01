@@ -56,15 +56,17 @@ def post_article(request):
 
 
 def article_detail(request, no):
-    art = Article.objects.get(No=no)
-
-    return render_to_response('blog/article.html', {'art': art},
+    result = {'art': Article.objects.get(No=no)}
+    sd = sidebar_data()
+    return render_to_response('blog/article.html', dict(result, **sd),
                               context_instance=RequestContext(request))
 
 
 def article_list(request, id):
-    arts = Article.objects.filter(ArticleTypeId=id)
-    return render_to_response('blog/article_list.html', {'arts': arts},
+    result = {'arts': Article.objects.filter(ArticleTypeId=id)}
+    sd = sidebar_data()
+
+    return render_to_response('blog/article_list.html', dict(result, **sd),
                               context_instance=RequestContext(request))
 
 
