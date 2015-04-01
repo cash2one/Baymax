@@ -47,13 +47,13 @@
             <h3>文章分类</h3>
             <ul>
                 {% for type in art_types %}
-                    <li><a href="/blog/articles/{{ type.TypeName }}">{{ type.TypeName }}</a></li>
+                    <li><a href="/blog/articles/type/{{ type.TypeName }}">{{ type.TypeName }}</a></li>
                 {% endfor %}
             </ul>
             <h3>标签</h3>
             <ul>
                 {% for tag in tags %}
-                    <li><a href="/blog/articles/{{ tag.id }}">{{ tag.TagName }}</a></li>
+                    <li><a href="/blog/articles/tag/{{ tag.id }}">{{ tag.TagName }}</a></li>
                 {% endfor %}
             </ul>
         </div>
