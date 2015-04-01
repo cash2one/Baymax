@@ -12,16 +12,14 @@ from .models import Article, ArticleType, Comment
 
 
 def home(request):
-    bing = utils.getBingImg('http://cn.bing.com/')
     arts = Article.objects.all()
 
-    return render_to_response('blog/index.html', {'bing': bing, 'arts': arts},
+    return render_to_response('blog/index.html', {'arts': arts},
                               context_instance=RequestContext(request))
 
 
 @login_required(login_url="/woodpecker/login/")
 def post_article(request):
-    bing = utils.getBingImg('http://cn.bing.com/')
     if request.method == 'POST':
         form = forms.ArticleForm(request.POST)
         if form.is_valid():
@@ -41,13 +39,12 @@ def post_article(request):
             return HttpResponseRedirect('/')
     else:
         form = forms.ArticleForm()
-    return render_to_response('blog/post.html', {'bing': bing, 'form': form},
+    return render_to_response('blog/post.html', {'form': form},
                               context_instance=RequestContext(request))
 
 
 def article_detail(request, id):
     art = Article.objects.get(id=id)
-    bing = utils.getBingImg('http://cn.bing.com/')
 
-    return render_to_response('blog/article.html', {'bing': bing, 'art': art},
+    return render_to_response('blog/article.html', {'art': art},
                               context_instance=RequestContext(request))
