@@ -12,18 +12,19 @@ from .models import Article, ArticleType, Comment, Tags
 import time
 
 
-def show_sidebar():
-    arts = Article.objects.all()
+def sidebar_data():
+    new_arts = Article.objects.all()[:5]
     art_type = ArticleType.objects.all()
     tags = Tags.objects.all()
 
-    return arts, art_type, tags
+    return new_arts, art_type, tags
 
 
 def home(request):
     arts = Article.objects.all()
+    sd = sidebar_data()
 
-    return render_to_response('blog/index.html', {'arts': arts},
+    return render_to_response('blog/index.html', {'arts': arts,'new_arts':sd[0],'art_types':sd[1],'tags':sd[2]},
                               context_instance=RequestContext(request))
 
 
