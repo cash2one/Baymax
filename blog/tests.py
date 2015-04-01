@@ -37,9 +37,9 @@ def get_dominant_color(image):
     return dominant_color
 
 def times():
-    import time
-    t =time.time()
-    return t
+    d={'a':1,'b':3}
+    c={'c':4,'d':5}
+    return dict(d,**c)
 
 if __name__ == "__main__":
     #from PIL import Image

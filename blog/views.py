@@ -14,17 +14,17 @@ import time
 
 def sidebar_data():
     new_arts = Article.objects.all()[:5]
-    art_type = ArticleType.objects.all()
+    art_types = ArticleType.objects.all()
     tags = Tags.objects.all()
 
-    return new_arts, art_type, tags
+    return {'new_arts': new_arts, 'art_types': art_types, 'tags': tags}
 
 
 def home(request):
-    arts = Article.objects.all()
     sd = sidebar_data()
 
-    return render_to_response('blog/index.html', {'arts': arts,'new_arts':sd[0],'art_types':sd[1],'tags':sd[2]},
+    result = {'arts': Article.objects.all()}
+    return render_to_response('blog/index.html', dict(result, **sd),
                               context_instance=RequestContext(request))
 
 
