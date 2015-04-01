@@ -16,7 +16,6 @@ class Article(models.Model):
     ReplyNum = models.IntegerField(default=0)
     ReadNum = models.IntegerField(default=0)
     Status = models.IntegerField(default=0)
-    Tags = models.CharField(max_length=150)
     Description = models.TextField(null=True, blank=True)
 
 
@@ -33,5 +32,10 @@ class Comment(models.Model):
 
 
 class Tags(models.Model):
-    ArticleId = models.ForeignKey(Article)
     TagName = models.CharField(max_length=50)
+    Quote = models.IntegerField(default=0)
+
+
+class TagsMap(models.Model):
+    ArticleId = models.ForeignKey(ArticleType)
+    TagsId = models.ForeignKey(Tags)

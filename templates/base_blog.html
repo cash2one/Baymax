@@ -50,6 +50,12 @@
                     <li><a href="/blog/articles/{{ type.TypeName }}">{{ type.TypeName }}</a></li>
                 {% endfor %}
             </ul>
+            <h3>标签</h3>
+            <ul>
+                {% for tag in tags %}
+                    <li><a href="/blog/articles/{{ tag.id }}">{{ tag.TagName }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

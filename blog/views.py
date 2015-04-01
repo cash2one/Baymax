@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import utils, forms
-from .models import Article, ArticleType, Comment, Tags
+from .models import Article, ArticleType, Comment, Tags, TagsMap
 import time
 
 
@@ -62,7 +62,7 @@ def article_detail(request, no):
                               context_instance=RequestContext(request))
 
 
-def article_list(request, name):
+def articles_by_type(request, name):
     art_type = ArticleType.objects.get(TypeName=name)
     result = {'arts': Article.objects.filter(ArticleTypeId=art_type.id)}
     sd = sidebar_data()
@@ -70,6 +70,20 @@ def article_list(request, name):
     return render_to_response('blog/article_list.html', dict(result, **sd),
                               context_instance=RequestContext(request))
 
+
+def articles_by_tag(request, id):
+    tag = Tags.objects.get(id=id)
+    tag_map = TagsMap.objects.filter(TagsId=tag.id)
+
+    art_list = []
+
+    for tm in tag_map:
+        art_list.append(Article.objects.get(id=tm.ArticleId))
+
+    result = {'arts': art_list}
+    sd = sidebar_data()
+    return render_to_response('blog/article_list.html', dict(result, **sd),
+                              context_instance=RequestContext(request))
 
 
 
