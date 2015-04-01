@@ -20,6 +20,7 @@ def sidebar_data():
     return {'new_arts': new_arts, 'art_types': art_types, 'tags': tags}
 
 
+
 def home(request):
     sd = sidebar_data()
 
@@ -42,12 +43,28 @@ def post_article(request):
             ReplyNum = 3
             ReadNum = 2
             Status = 1
-            Tags = cd['Tags']
+            tag_strs = cd['Tags'].split(',')
 
             article = Article(No=No, Title=Title, ArticleTypeId=ArticleTypeId, Content=Content,
                               ReplyNum=ReplyNum,
                               ReadNum=ReadNum, Status=Status, Tags=Tags, Description=Description)
             article.save()
+
+            #取出标签名
+            tags=Tags.objects.all()
+            tag_names=[]
+            for t in tags:
+                tag_names.append(t.TagName)
+
+            #比较后存入
+            for t in tag_strs:
+                if t not in tag_names:
+                    tag = Tags(TagName=t,Quote=1)
+                    tag.save()
+                else:
+                    Tags.objects.get(TagName=t).update(Quote=1)
+            #TODO:tagmap数据更新
+
             return HttpResponseRedirect('/')
     else:
         form = forms.ArticleForm()
