@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^home/$', 'blog.views.home'),
     url(r'^post/$', 'blog.views.post_article'),
     url(r'^article/(?P<no>\w+)/$', 'blog.views.article_detail'),
-    url(r'^articles/(?P<id>\w+)/$', 'blog.views.article_list'),
+    url(r'^articles/(?P<name>\w+)/$', 'blog.views.article_list'),
 
 )

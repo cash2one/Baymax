@@ -62,8 +62,9 @@ def article_detail(request, no):
                               context_instance=RequestContext(request))
 
 
-def article_list(request, id):
-    result = {'arts': Article.objects.filter(ArticleTypeId=id)}
+def article_list(request, name):
+    art_type = ArticleType.objects.get(TypeName=name)
+    result = {'arts': Article.objects.filter(ArticleTypeId=art_type.id)}
     sd = sidebar_data()
 
     return render_to_response('blog/article_list.html', dict(result, **sd),
