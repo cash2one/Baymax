@@ -40,13 +40,13 @@
             <h3>最新文章</h3>
             <ul>
                 {% for art in new_arts %}
-                    <li>{{ art.Title }}</li>
+                    <li><a href="/blog/article/{{ art.No }}">{{ art.Title }}</a></li>
                 {% endfor %}
             </ul>
             <h3>文章分类</h3>
             <ul>
                 {% for type in art_types %}
-                    <li>{{ type.TypeName }}</li>
+                    <li><a href="/blog/articles/{{ type.id }}">{{ type.TypeName }}</a></li>
                 {% endfor %}
             </ul>
         </div>

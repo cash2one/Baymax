@@ -14,9 +14,24 @@ li {
     list-style: none;
 }
 
+a:link {
+    color: #555;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #555;
+    text-decoration: none;
+}
+
 a:hover {
     color: #fff !important;
     background-color: #dc1941;
+}
+
+a:active {
+    color: #555;
+    text-decoration: none;
 }
 
 .bing {
@@ -110,6 +125,11 @@ a:hover {
 
 .sidebar > ul {
     padding: 10px 0 20px 0;
+}
+
+.sidebar > ul > li > a {
+    color: #555;
+    text-decoration: none;
 }
 
 .article-list section, .article-list article {

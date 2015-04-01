@@ -1,0 +1,14 @@
+{% extends "base_blog.html" %}
+{% block content %}
+    {% for art in arts %}
+        <section>
+            <h3><a href="/blog/article/{{ art.No }}/">{{ art.Title }}</a></h3>
+            <ul>
+                <li>{{ art.PostTime }}</li>
+                <li>{{ art.ReplyNum }}</li>
+                <li>{{ art.ReadNum }}</li>
+                <li>{{ art.Tags }}</li>
+            </ul>
+        </section>
+    {% endfor %}
+{% endblock %}

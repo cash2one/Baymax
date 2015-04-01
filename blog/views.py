@@ -60,3 +60,13 @@ def article_detail(request, no):
 
     return render_to_response('blog/article.html', {'art': art},
                               context_instance=RequestContext(request))
+
+
+def article_list(request, id):
+    arts = Article.objects.filter(ArticleTypeId=id)
+    return render_to_response('blog/article_list.html', {'arts': arts},
+                              context_instance=RequestContext(request))
+
+
+
+
