@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Microsoft YaHei";
-    background-color: #efefef;
+    background: #efefef url(../img/body.gif) repeat;
 }
 
 h1, h2, h3, ul, li, p {
@@ -36,8 +36,11 @@ a:hover {
     width: auto;
     height: 65px;
     background-color: rgba(255, 255, 255, 1) !important;
-    background-color: #eee;
+    background-color: #fff;
     filter: Alpha(opacity=100);
+    -webkit-box-shadow: 0 1px 0 1px #e4e6eb;
+    -moz-box-shadow: 0 1px 0 1px #e4e6eb;
+    box-shadow: 0 1px 0 1px #e4e6eb;
 }
 
 .nav {
@@ -55,7 +58,6 @@ a:hover {
     color: #dc1941;
     position: relative;
 }
-
 
 .nav .row .menu > ul {
     padding: 15px 0 0 0;
@@ -111,7 +113,7 @@ a:hover {
     padding: 10px 0 20px 0;
 }
 
-.article-list section,.article-list article {
+.article-list section, .article-list article {
     background-color: #fff;
     overflow: auto;
     padding: 30px;
