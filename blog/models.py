@@ -5,6 +5,9 @@ class ArticleType(models.Model):
     TypeName = models.CharField(max_length=50)
     TypeDescription = models.TextField(null=True, blank=True)
 
+    def __unicode__(self):
+        return self.TypeName
+
 
 class Article(models.Model):
     No = models.CharField(max_length=20)
@@ -35,6 +38,8 @@ class Tags(models.Model):
     TagName = models.CharField(max_length=50)
     Quote = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return self.TagName
 
 class TagsMap(models.Model):
     ArticleId = models.ForeignKey(ArticleType)
