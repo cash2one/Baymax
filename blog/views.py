@@ -17,7 +17,7 @@ def sidebar_data():
     art_types = ArticleType.objects.all()
     tags = Tags.objects.all()
 
-    return {'new_arts': new_arts, 'art_types': art_types, 'tags': tags}
+    return {'new_arts': new_arts, 'art_types': art_types, 'tags': tags,'tagnames':tags.TagName}
 
 
 
