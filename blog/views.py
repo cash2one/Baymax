@@ -26,10 +26,6 @@ def home(request):
 
     result = {'arts': Article.objects.all()}
 
-    aa =ArticleType.objects.all()
-    for a in aa:
-        print a.TypeName
-
     return render_to_response('blog/index.html', dict(result, **sd),
                               context_instance=RequestContext(request))
 
