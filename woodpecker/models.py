@@ -21,8 +21,8 @@ class DeviceModule(models.Model):
     ModuleName = models.CharField(max_length=300)
     DisplayName = models.CharField(max_length=300)
     IsEnable = models.BooleanField(default=True)
-    CreateTime = models.DateTimeField(null=True)
-    UpdateTime = models.DateTimeField(null=True)
+    CreateTime = models.DateTimeField(null=True, auto_now_add=True)
+    UpdateTime = models.DateTimeField(null=True, auto_now=True)
     Description = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
@@ -38,8 +38,8 @@ class TestCase(models.Model):
     TestCaseAction = models.CharField(max_length=100, null=True, blank=True)
     TestCaseEntity = models.CharField(max_length=100, null=True, blank=True)
     IsEnable = models.BooleanField(default=True)
-    CreateTime = models.DateTimeField(null=True)
-    UpdateTime = models.DateTimeField(null=True)
+    CreateTime = models.DateTimeField(null=True, auto_now_add=True)
+    UpdateTime = models.DateTimeField(null=True, auto_now=True)
     Description = models.TextField(null=True, blank=True)
     AloneUse = models.CharField(max_length=50, null=True, blank=True)
     IsJoin = models.BooleanField(default=True)
@@ -53,8 +53,8 @@ class Task(models.Model):
     Creator = models.ForeignKey(AppUser)
     DeviceType = models.IntegerField(default=1)  # 1、web app，2、android，3、iOS
     Description = models.TextField(null=True, blank=True)
-    CreateTime = models.DateTimeField()
-    UpdateTime = models.DateTimeField()
+    CreateTime = models.DateTimeField(auto_now_add=True)
+    UpdateTime = models.DateTimeField(auto_now=True)
     CreateWay = models.IntegerField(default=1)  # 任务有在app上创建和web上创建
     IsShared = models.BooleanField(default=1)  # 是否共享
 
