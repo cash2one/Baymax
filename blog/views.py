@@ -92,8 +92,8 @@ def articles_by_type(request, name):
                               context_instance=RequestContext(request))
 
 
-def articles_by_tag(request, id):
-    tag = Tags.objects.get(id=id)
+def articles_by_tag(request, name):
+    tag = Tags.objects.get(TagName=name)
     tag_map = TagsMap.objects.filter(TagsId=tag.id)
 
     art_list = []
