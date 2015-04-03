@@ -25,6 +25,9 @@ class DeviceModule(models.Model):
     UpdateTime = models.DateTimeField(null=True)
     Description = models.TextField(null=True, blank=True)
 
+    def __unicode__(self):
+        return u'%s(%s)' % (self.DisplayName, self.ModuleName)
+
 
 class TestCase(models.Model):
     ModuleId = models.ForeignKey(DeviceModule)
