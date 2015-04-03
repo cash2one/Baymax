@@ -47,7 +47,7 @@ def post_article(request):
 
             article = Article(No=No, Title=Title, ArticleTypeId=ArticleTypeId, Content=Content,
                               ReplyNum=ReplyNum,
-                              ReadNum=ReadNum, Status=Status, Tags=Tags, Description=Description)
+                              ReadNum=ReadNum, Status=Status, Description=Description)
             # article.save()
 
             # 取出标签名
