@@ -6,9 +6,9 @@
 </head>
 <body>
 {{ ret }}
-    {% for rt in ret.item %}
+    {% for t in ret %}
         <section>
-            <h3><a href="/blog/article/{{ rt.link }}/">{{ rt.title }}</a>{{ rt.pubDate }}</h3>
+            {{ rt.t }}
             <p>{{ rt.description }}</p>
         </section>
     {% endfor %}
