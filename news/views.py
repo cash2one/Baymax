@@ -39,9 +39,7 @@ def cnbeta(request):
         xh = XMLHandler()
         xml.sax.parseString(response.read(), xh)
         ret = xh.getDict()
-        import pprint
-        pprint.pprint(ret)
-        return render_to_response("news/news.html", {"con": ret}, context_instance=RequestContext(request))
+        return render_to_response("news/news.html", ret, context_instance=RequestContext(request))
     except urllib2.URLError, e:
         if hasattr(e, "reason"):
             print u"连接失败,错误原因", e.reason
