@@ -5,6 +5,11 @@
     <title></title>
 </head>
 <body>
-{{ con }}
+    {% for rt in ret %}
+        <section>
+            <h3><a href="/blog/article/{{ rt.link }}/">{{ rt.title }}</a>{{ rt.pubDate }}</h3>
+            <p>{{ rt.description }}</p>
+        </section>
+    {% endfor %}
 </body>
 </html>

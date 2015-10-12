@@ -8,19 +8,27 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 import time, urllib2, re, json, httplib
+import xml.sax
+import xml.sax.handler
+
+class XMLHandler(xml.sax.handler.ContentHandler):
+    def __init__(self):
+        self.buffer = ""
+        self.mapping = {}
+
+    def startElement(self, name, attributes):
+        self.buffer = ""
+
+    def characters(self, data):
+        self.buffer += data
+
+    def endElement(self, name):
+        self.mapping[name] = self.buffer
+
+    def getDict(self):
+        return self.mapping
 
 
-def oschina(request):
-    try:
-        url = 'http://www.oschina.net/news/rss'
-        req = urllib2.Request(url)
-        req.add_header('Content-Type','application/rss+xml')
-        response = urllib2.urlopen(req)
-        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
-    except urllib2.URLError, e:
-        if hasattr(e, "reason"):
-            print u"连接失败,错误原因", e.reason
-            return None
 
 def cnbeta(request):
     try:
@@ -28,7 +36,10 @@ def cnbeta(request):
         req = urllib2.Request(url)
         req.add_header('Content-Type','application/rss+xml')
         response = urllib2.urlopen(req)
-        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
+        xh = XMLHandler()
+        xml.sax.parseString(response.read(), xh)
+        ret = xh.getDict()
+        return render_to_response("news/news.html", ret, context_instance=RequestContext(request))
     except urllib2.URLError, e:
         if hasattr(e, "reason"):
             print u"连接失败,错误原因", e.reason
@@ -40,7 +51,10 @@ def csdn(request):
         req = urllib2.Request(url)
         req.add_header('Content-Type','application/rss+xml')
         response = urllib2.urlopen(req)
-        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
+        xh = XMLHandler()
+        xml.sax.parseString(response.read(), xh)
+        ret = xh.getDict()
+        return render_to_response("news/news.html", ret, context_instance=RequestContext(request))
     except urllib2.URLError, e:
         if hasattr(e, "reason"):
             print u"连接失败,错误原因", e.reason
