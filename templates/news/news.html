@@ -7,7 +7,7 @@
 <body>
     {% for rt in con %}
         <section>
-            <h3><a href="/blog/article/{{ rt.item.link }}/">{{ rt.item.title }}</a>{{ rt.item.pubDate }}</h3>
+            <h3><a href="/blog/article/{{ rt.link }}/">{{ rt.title }}</a>{{ rt.pubDate }}</h3>
             <p>{{ rt.description }}</p>
         </section>
     {% endfor %}
