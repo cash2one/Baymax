@@ -6,10 +6,10 @@
 </head>
 <body>
 {{ ret }}
-    {% for t in ret %}
+    {% for key,value in con.items %}
         <section>
-            {{ rt.t }}
-            <p>{{ rt.description }}</p>
+            <h3>{{ key }}</h3>
+            <p>{{ value }}</p>
         </section>
     {% endfor %}
 </body>
