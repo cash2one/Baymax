@@ -16,7 +16,7 @@ def news(request):
         req = urllib2.Request(url)
         response = urllib2.urlopen(req)
         #print response.read()
-        return render_to_response("news/news.html", {"con": response}, context_instance=RequestContext(request))
+        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
     except urllib2.URLError, e:
         if hasattr(e, "reason"):
             print u"连接失败,错误原因", e.reason
