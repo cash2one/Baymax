@@ -10,12 +10,36 @@ from django.contrib.auth.decorators import login_required
 import time, urllib2, re, json, httplib
 
 
-def news(request):
+def oschina(request):
     try:
-        url = 'http://rss.sina.com.cn/tech/rollnews.xml'
+        url = 'http://www.oschina.net/news/rss'
         req = urllib2.Request(url)
+        req.add_header('Content-Type','application/rss+xml')
         response = urllib2.urlopen(req)
-        #print response.read()
+        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
+    except urllib2.URLError, e:
+        if hasattr(e, "reason"):
+            print u"连接失败,错误原因", e.reason
+            return None
+
+def cnbeta(request):
+    try:
+        url = 'http://rss.cnbeta.com/rss'
+        req = urllib2.Request(url)
+        req.add_header('Content-Type','application/rss+xml')
+        response = urllib2.urlopen(req)
+        return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
+    except urllib2.URLError, e:
+        if hasattr(e, "reason"):
+            print u"连接失败,错误原因", e.reason
+            return None
+
+def csdn(request):
+    try:
+        url = 'http://www.csdn.net/article/rss_lastnews'
+        req = urllib2.Request(url)
+        req.add_header('Content-Type','application/rss+xml')
+        response = urllib2.urlopen(req)
         return render_to_response("news/news.html", {"con": response.read()}, context_instance=RequestContext(request))
     except urllib2.URLError, e:
         if hasattr(e, "reason"):
