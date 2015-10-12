@@ -7,7 +7,20 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-import time, urllib2, re, json,httplib
+import time, urllib2, re, json, httplib
+
+
+def news(request):
+    try:
+        url = 'http://rss.sina.com.cn/tech/rollnews.xml'
+        req = urllib2.Request(url)
+        response = urllib2.urlopen(req)
+        #print response.read()
+        return render_to_response("news/news.html", {"con": response}, context_instance=RequestContext(request))
+    except urllib2.URLError, e:
+        if hasattr(e, "reason"):
+            print u"连接失败,错误原因", e.reason
+            return None
 
 
 def wap(request):
@@ -23,7 +36,7 @@ def wap_menu(request):
 
 
 # def result_data(request):
-#     page = request.GET.get('page')
+# page = request.GET.get('page')
 #     response_data = []
 #
 #     temp_data = [{'result': 'Facebook本周举行开发者大会', 'image': 'http://p2.pstatp.com/list/2575/443537243'},
@@ -41,6 +54,7 @@ def wap_menu(request):
 
 def wap_new(request):
     return render_to_response("news/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
+
 
 def wap_result(request):
     t = str(time.time()).split('.')[0]
