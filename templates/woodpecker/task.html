@@ -42,29 +42,23 @@
         </div>
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
             <tr>
-                <th><input type="checkbox"/></th>
                 <th>序号</th>
                 <th>任务名称</th>
                 <th>类型</th>
-                <th>任务数</th>
-                <th>状态</th>
                 <th>设备类型</th>
+                <th>创建人</th>
                 <th>创建时间</th>
                 <th>更新时间</th>
-                <th>备注</th>
             </tr>
             {% for task in tasks %}
                 <tr>
-                    <td><input type="checkbox"/></td>
                     <td>{{ task.id }}</td>
-                    <td>{{ task.TaskName }}</td>
-                    <td>{{ task.TaskType }}</td>
-                    <td>{{ task.TaskCount }}</td>
-                    <td>{{ task.TaskState }}</td>
-                    <td>{{ task.DeviceType }}</td>
-                    <td>{{ task.CreateTime }}</td>
-                    <td>{{ task.UpdateTime }}</td>
-                    <td>{{ task.Desc }}</td>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.type }}</td>
+                    <td>device</td>
+                    <td>{{ task.user.name }}</td>
+                    <td>{{ task.create_time|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ task.update_time|date:"Y-m-d H:i:s" }}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -84,45 +78,26 @@
                     <div class="modal-body">
                         {% csrf_token %}
                         <div class="row form-col2">
-                            <div class="col-md-6"><label class="control-label">任务名称:</label>{{ form.TaskName }}</div>
-                            <div class="col-md-6"><label class="control-label">类型:</label>{{ form.TaskType }}</div>
+                            <div class="col-md-6"><label class="control-label">任务名称:</label>{{ form.name }}</div>
+                            <div class="col-md-6"><label class="control-label">类型:</label>{{ form.type }}</div>
                         </div>
 
                         <div class="row form-col2">
                             <div class="col-md-6">
-                                <label class="control-label">执行数:</label>{{ form.TaskCount }}
-                            </div>
-                            <!--div class="form-group">
-                                <label class="control-label">状态:</label>{{ form.TaskState }}
-                            </div-->
-                            <div class="col-md-6">
-                                <label class="control-label">设备类型:</label>{{ form.DeviceType }}
+                                <label class="control-label">创建人:</label>{{ form.user }}
                             </div>
                         </div>
-                        <!--div class="form-group">
-                                <label class="control-label">创建方式:</label>{{ form.CreateWay }}
-                            </div-->
+
                         <div class="row form-col2">
                             <div class="col-md-12">
-                                <label class="control-label">是否共享:</label>{{ form.IsShared }}
-                            </div>
-                        </div>
-                        <!--class="form-group">
-                                <label class="control-label">创建时间:</label>{{ form.CreateTime }}
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">更新时间:</label>{{ form.UpdateTime }}
-                            </div-->
-                        <div class="row form-col2">
-                            <div class="col-md-12">
-                                <label class="control-label">备注:</label>{{ form.Description }}
+                                <label class="control-label">备注:</label>
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
                     </div>
                 </form>
             </div>

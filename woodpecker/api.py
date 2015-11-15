@@ -3,14 +3,14 @@ __author__ = 'guguohai@pathbook.com.cn'
 
 from rest_framework import viewsets
 import serializer
-from .models import Task, TestCase, AppUser, DeviceModule
+from .models import Task, TestCase, User, Module
 
 
 class DeviceModuleViewSet(viewsets.ModelViewSet):
-    queryset = DeviceModule.objects.all()
+    queryset = Module.objects.all()
     serializer_class = serializer.DeviceSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = AppUser.objects.all()
+    queryset = User.objects.all()
     serializer_class = serializer.UserSerializer

@@ -2,7 +2,7 @@
 __author__ = 'guguohai@outlook.com'
 
 from django.conf.urls import patterns, include, url
-from .models import DeviceModule
+#from .models import DeviceModule
 
 from rest_framework import routers
 import api

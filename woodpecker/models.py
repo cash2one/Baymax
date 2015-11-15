@@ -107,7 +107,10 @@ class TestCase(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length=200)
     product = models.ForeignKey(Product)
+    type = models.IntegerField(default=1)  # 1、串行，2、并行
     user = models.ForeignKey(User)
+    create_time = models.DateTimeField(auto_now_add=True)
+    update_time = models.DateTimeField(auto_now=True)
     testcases = models.ManyToManyField(TestCase, through='Task_TestCase')
 
     class Meta:
