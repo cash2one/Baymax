@@ -1,7 +1,7 @@
 <uwsgi>
     <socket>127.0.0.1:9001</socket>
     <processes>8</processes>
-    <chdir>/home/web/Baymax</chdir>
+    <chdir>/var/www/Baymax</chdir>
     <pythonpath>..</pythonpath>
     <module>wsgi</module>
     <profiler>true</profiler>
@@ -9,6 +9,6 @@
     <enable-threads>true</enable-threads>
     <logdate>true</logdate>
     <limit-as>6048</limit-as>
-    <daemonize>/home/web/Baymax/log/django.log</daemonize>
+    <daemonize>/var/www/Baymax/log/django.log</daemonize>
 </uwsgi>
 
