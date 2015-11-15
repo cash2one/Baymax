@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -27,7 +27,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -77,11 +76,30 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'baymax',
         'USER': 'root',
-        'PASSWORD': 'ro0oT123',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+#     },
+#     'woodpecker': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'woodpecker',
+#         'USER': 'root',
+#         'PASSWORD': 'rOot@123',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
+#
+# # use multi-database in django
+# DATABASE_ROUTERS = ['db_router.DatabaseAppsRouter']
+# DATABASE_APPS_MAPPING = {
+#     # example:
+#     #'app_name':'database_name',
+#     'blog': 'default',
+#     'woodpecker': 'woodpecker',
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -108,12 +126,12 @@ STATIC_URL = '/static/'
 # )
 
 TEMPLATE_DIRS = (
-    #os.path.join(BASE_DIR,  'templates'),
+    # os.path.join(BASE_DIR,  'templates'),
     PATH('templates'),
 )
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )

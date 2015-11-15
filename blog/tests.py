@@ -42,6 +42,14 @@ def times():
     return dict(d,**c)
 
 if __name__ == "__main__":
-    #from PIL import Image
-    #print get_dominant_color(Image.open(PATH('./static/img/avatar.jpg')))
-    print times()
+    fi = open(PATH('close.png'),'rb')
+    try:
+        content = fi.read().encode('base64')
+        # new_f=open(PATH('new.png'),'wb')
+        # new_f.write(content)
+        print content
+    except IOError:
+        pass
+    finally:
+        fi.close()
+

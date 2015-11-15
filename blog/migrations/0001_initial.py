@@ -24,9 +24,6 @@ class Migration(migrations.Migration):
                 ('Status', models.IntegerField(default=0)),
                 ('Description', models.TextField(null=True, blank=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='ArticleType',
@@ -35,9 +32,6 @@ class Migration(migrations.Migration):
                 ('TypeName', models.CharField(max_length=50)),
                 ('TypeDescription', models.TextField(null=True, blank=True)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Comment',
@@ -53,9 +47,6 @@ class Migration(migrations.Migration):
                 ('CreateTime', models.DateTimeField()),
                 ('ArticleId', models.ForeignKey(to='blog.Article')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Tags',
@@ -64,9 +55,6 @@ class Migration(migrations.Migration):
                 ('TagName', models.CharField(max_length=50)),
                 ('Quote', models.IntegerField(default=0)),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='TagsMap',
@@ -75,14 +63,10 @@ class Migration(migrations.Migration):
                 ('ArticleId', models.ForeignKey(to='blog.ArticleType')),
                 ('TagsId', models.ForeignKey(to='blog.Tags')),
             ],
-            options={
-            },
-            bases=(models.Model,),
         ),
         migrations.AddField(
             model_name='article',
             name='ArticleTypeId',
             field=models.ForeignKey(to='blog.ArticleType'),
-            preserve_default=True,
         ),
     ]

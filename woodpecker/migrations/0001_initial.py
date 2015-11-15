@@ -11,103 +11,245 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='AppUser',
+            name='Bug',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('UserName', models.CharField(max_length=50)),
-                ('DisplayName', models.CharField(max_length=50)),
-                ('UserPassword', models.CharField(max_length=50)),
-                ('Email', models.CharField(max_length=100, blank=True)),
-                ('UserDefined', models.TextField(blank=True)),
+                ('name', models.CharField(max_length=100)),
             ],
             options={
+                'db_table': 'wp_bug',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='DeviceModule',
+            name='Module',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('ModuleName', models.CharField(max_length=300)),
-                ('DisplayName', models.CharField(max_length=300)),
-                ('IsEnable', models.BooleanField(default=True)),
-                ('CreateTime', models.DateTimeField(null=True)),
-                ('UpdateTime', models.DateTimeField(null=True)),
-                ('Description', models.TextField(null=True, blank=True)),
+                ('name', models.CharField(max_length=100)),
             ],
             options={
+                'db_table': 'wp_module',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Result',
+            name='Permission',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('DeviceId', models.CharField(max_length=50, null=True, blank=True)),
-                ('TestResult', models.TextField(null=True, blank=True)),
-                ('StartTime', models.DateTimeField(null=True)),
-                ('EndTime', models.DateTimeField(null=True)),
-                ('TestResultFile', models.CharField(max_length=50)),
-                ('ResultCount', models.IntegerField()),
-                ('ValueSettings', models.TextField(null=True, blank=True)),
-                ('IsEnable', models.BooleanField(default=True)),
+                ('name', models.CharField(max_length=50)),
+                ('code', models.CharField(max_length=50)),
             ],
             options={
+                'db_table': 'wp_permission',
             },
-            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='PermissionType',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'wp_permissiontype',
+            },
+        ),
+        migrations.CreateModel(
+            name='Product',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+                'db_table': 'wp_product',
+            },
+        ),
+        migrations.CreateModel(
+            name='ProductType',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+                'db_table': 'wp_producttype',
+            },
+        ),
+        migrations.CreateModel(
+            name='Role',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50)),
+                ('display_name', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'wp_role',
+            },
+        ),
+        migrations.CreateModel(
+            name='Role_Permission',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('permission', models.ForeignKey(to='woodpecker.Permission')),
+                ('role', models.ForeignKey(to='woodpecker.Role')),
+            ],
+            options={
+                'db_table': 'wp_role_permission',
+            },
         ),
         migrations.CreateModel(
             name='Task',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('TaskName', models.CharField(max_length=50)),
-                ('TaskType', models.IntegerField(default=1)),
-                ('TaskCount', models.IntegerField()),
-                ('TaskState', models.IntegerField()),
-                ('DeviceType', models.IntegerField(default=1)),
-                ('Description', models.TextField(null=True, blank=True)),
-                ('CreateTime', models.DateTimeField()),
-                ('UpdateTime', models.DateTimeField()),
-                ('CreateWay', models.IntegerField(default=1)),
-                ('IsShared', models.BooleanField(default=1)),
-                ('Creator', models.ForeignKey(to='woodpecker.AppUser')),
+                ('name', models.CharField(max_length=200)),
+                ('product', models.ForeignKey(to='woodpecker.Product')),
             ],
             options={
+                'db_table': 'wp_task',
             },
-            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Task_TestCase',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('task', models.ForeignKey(to='woodpecker.Task')),
+            ],
+            options={
+                'db_table': 'wp_result',
+            },
+        ),
+        migrations.CreateModel(
+            name='Task_TestCase_Bug',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('bug', models.ForeignKey(to='woodpecker.Bug')),
+                ('task', models.ForeignKey(to='woodpecker.Task')),
+            ],
+            options={
+                'db_table': 'wp_result_bug',
+            },
+        ),
+        migrations.CreateModel(
+            name='Team',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50)),
+            ],
+            options={
+                'db_table': 'wp_team',
+            },
         ),
         migrations.CreateModel(
             name='TestCase',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('TestCaseName', models.CharField(max_length=50)),
-                ('DisplayName', models.CharField(max_length=50)),
-                ('ExecuteCount', models.IntegerField()),
-                ('ActivityValue', models.TextField(null=True, blank=True)),
-                ('TestCaseAction', models.CharField(max_length=100, null=True, blank=True)),
-                ('TestCaseEntity', models.CharField(max_length=100, null=True, blank=True)),
-                ('IsEnable', models.BooleanField(default=True)),
-                ('CreateTime', models.DateTimeField(null=True)),
-                ('UpdateTime', models.DateTimeField(null=True)),
-                ('Description', models.TextField(null=True, blank=True)),
-                ('AloneUse', models.CharField(max_length=50, null=True, blank=True)),
-                ('IsJoin', models.BooleanField(default=True)),
-                ('ModuleId', models.ForeignKey(to='woodpecker.DeviceModule')),
+                ('name', models.CharField(max_length=100)),
+                ('module', models.ForeignKey(to='woodpecker.Module')),
             ],
             options={
+                'db_table': 'wp_testcase',
             },
-            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50)),
+                ('true_name', models.CharField(max_length=50)),
+                ('password', models.CharField(max_length=50)),
+                ('email', models.EmailField(max_length=254, blank=True)),
+                ('team', models.ForeignKey(to='woodpecker.Team')),
+            ],
+            options={
+                'db_table': 'wp_user',
+            },
+        ),
+        migrations.CreateModel(
+            name='User_Role',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('role', models.ForeignKey(to='woodpecker.Role')),
+                ('user', models.ForeignKey(to='woodpecker.User')),
+            ],
+            options={
+                'db_table': 'wp_user_role',
+            },
         ),
         migrations.AddField(
-            model_name='result',
-            name='TaskId',
-            field=models.ForeignKey(to='woodpecker.Task'),
-            preserve_default=True,
+            model_name='testcase',
+            name='user',
+            field=models.ForeignKey(to='woodpecker.User'),
         ),
         migrations.AddField(
-            model_name='result',
-            name='TestCaseId',
+            model_name='task_testcase_bug',
+            name='testcase',
             field=models.ForeignKey(to='woodpecker.TestCase'),
-            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='task_testcase',
+            name='testcase',
+            field=models.ForeignKey(to='woodpecker.TestCase'),
+        ),
+        migrations.AddField(
+            model_name='task',
+            name='testcases',
+            field=models.ManyToManyField(to='woodpecker.TestCase', through='woodpecker.Task_TestCase'),
+        ),
+        migrations.AddField(
+            model_name='task',
+            name='user',
+            field=models.ForeignKey(to='woodpecker.User'),
+        ),
+        migrations.AddField(
+            model_name='role',
+            name='Users',
+            field=models.ManyToManyField(to='woodpecker.User', through='woodpecker.User_Role'),
+        ),
+        migrations.AddField(
+            model_name='product',
+            name='team',
+            field=models.ForeignKey(to='woodpecker.Team'),
+        ),
+        migrations.AddField(
+            model_name='product',
+            name='type',
+            field=models.ForeignKey(to='woodpecker.ProductType'),
+        ),
+        migrations.AddField(
+            model_name='permission',
+            name='roles',
+            field=models.ManyToManyField(to='woodpecker.Role', through='woodpecker.Role_Permission'),
+        ),
+        migrations.AddField(
+            model_name='permission',
+            name='type',
+            field=models.ForeignKey(to='woodpecker.PermissionType'),
+        ),
+        migrations.AddField(
+            model_name='module',
+            name='product',
+            field=models.ForeignKey(to='woodpecker.Product'),
+        ),
+        migrations.AddField(
+            model_name='bug',
+            name='tasks',
+            field=models.ManyToManyField(to='woodpecker.Task', through='woodpecker.Task_TestCase_Bug'),
+        ),
+        migrations.AddField(
+            model_name='bug',
+            name='testcases',
+            field=models.ManyToManyField(to='woodpecker.TestCase', through='woodpecker.Task_TestCase_Bug'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='user_role',
+            unique_together=set([('user', 'role')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='task_testcase_bug',
+            unique_together=set([('task', 'testcase', 'bug')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='task_testcase',
+            unique_together=set([('task', 'testcase')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='role_permission',
+            unique_together=set([('role', 'permission')]),
         ),
     ]
