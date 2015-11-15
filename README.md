@@ -1,2 +1,2 @@
 # Baymax
-autotest manager platform
+django web

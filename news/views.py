@@ -7,7 +7,58 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-import time, urllib2, re, json,httplib
+import time, urllib2, re, json, httplib
+import xml.sax
+import xml.sax.handler
+
+class XMLHandler(xml.sax.handler.ContentHandler):
+    def __init__(self):
+        self.buffer = ""
+        self.mapping = {}
+
+    def startElement(self, name, attributes):
+        self.buffer = ""
+
+    def characters(self, data):
+        self.buffer += data
+
+    def endElement(self, name):
+        self.mapping[name] = self.buffer
+
+    def getDict(self):
+        return self.mapping
+
+
+
+def cnbeta(request):
+    try:
+        url = 'http://rss.cnbeta.com/rss'
+        req = urllib2.Request(url)
+        req.add_header('Content-Type','application/rss+xml')
+        response = urllib2.urlopen(req)
+        xh = XMLHandler()
+        xml.sax.parseString(response.read(), xh)
+        ret = xh.getDict()
+        return render_to_response("news/news.html", {"con": ret}, context_instance=RequestContext(request))
+    except urllib2.URLError, e:
+        if hasattr(e, "reason"):
+            print u"连接失败,错误原因", e.reason
+            return None
+
+def csdn(request):
+    try:
+        url = 'http://www.csdn.net/article/rss_lastnews'
+        req = urllib2.Request(url)
+        req.add_header('Content-Type','application/rss+xml')
+        response = urllib2.urlopen(req)
+        xh = XMLHandler()
+        xml.sax.parseString(response.read(), xh)
+        ret = xh.getDict()
+        return render_to_response("news/news.html", {"con": ret}, context_instance=RequestContext(request))
+    except urllib2.URLError, e:
+        if hasattr(e, "reason"):
+            print u"连接失败,错误原因", e.reason
+            return None
 
 
 def wap(request):
@@ -23,7 +74,7 @@ def wap_menu(request):
 
 
 # def result_data(request):
-#     page = request.GET.get('page')
+# page = request.GET.get('page')
 #     response_data = []
 #
 #     temp_data = [{'result': 'Facebook本周举行开发者大会', 'image': 'http://p2.pstatp.com/list/2575/443537243'},
@@ -41,6 +92,7 @@ def wap_menu(request):
 
 def wap_new(request):
     return render_to_response("news/wap.html", {"testcase": ''}, context_instance=RequestContext(request))
+
 
 def wap_result(request):
     t = str(time.time()).split('.')[0]
