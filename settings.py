@@ -65,7 +65,7 @@ ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
 
-
+AUTH_USER_MODEL = "woodpecker.User"
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -76,7 +76,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'baymax',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'rOot@123',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

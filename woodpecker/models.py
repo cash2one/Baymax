@@ -1,6 +1,8 @@
 # coding=utf-8
 from django.db import models
-
+#from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 # null：
 # If True, Django will store empty values as NULL in the database. Default is False.
 # 如果为True，空值将会被存储为NULL，默认为False。
@@ -13,18 +15,23 @@ class Team(models.Model):
     name = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'wp_team'
+        db_table = 'team'
 
 
-class User(models.Model):
-    name = models.CharField(max_length=50)
-    true_name = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    email = models.EmailField(blank=True)
+class User(AbstractUser):
+    department = models.CharField(max_length=100)
     team = models.ForeignKey(Team)
 
-    class Meta:
-        db_table = 'wp_user'
+
+# class User(models.Model):
+#     name = models.CharField(max_length=50)
+#     true_name = models.CharField(max_length=50)
+#     password = models.CharField(max_length=50)
+#     email = models.EmailField(blank=True)
+#     team = models.ForeignKey(Team)
+#
+#     class Meta:
+#         db_table = 'user'
 
 
 class Role(models.Model):
@@ -33,15 +40,15 @@ class Role(models.Model):
     Users = models.ManyToManyField(User, through='User_Role')  # 注意多了through参数
 
     class Meta:
-        db_table = 'wp_role'
+        db_table = 'role'
 
 
 class User_Role(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     role = models.ForeignKey(Role)
 
     class Meta:
-        db_table = 'wp_user_role'
+        db_table = 'user_role'
         unique_together = ("user", "role")  # 复合主键
 
 
@@ -49,7 +56,7 @@ class PermissionType(models.Model):
     name = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'wp_permissiontype'
+        db_table = 'permissiontype'
 
 
 class Permission(models.Model):
@@ -59,7 +66,7 @@ class Permission(models.Model):
     roles = models.ManyToManyField(Role, through='Role_Permission')
 
     class Meta:
-        db_table = 'wp_permission'
+        db_table = 'permission'
 
 
 class Role_Permission(models.Model):
@@ -67,7 +74,7 @@ class Role_Permission(models.Model):
     permission = models.ForeignKey(Permission)
 
     class Meta:
-        db_table = 'wp_role_permission'
+        db_table = 'role_permission'
         unique_together = ("role", "permission")  # 复合主键
 
 
@@ -75,7 +82,7 @@ class ProductType(models.Model):
     name = models.CharField(max_length=100)
 
     class Meta:
-        db_table = 'wp_producttype'
+        db_table = 'producttype'
 
 
 class Product(models.Model):
@@ -84,7 +91,7 @@ class Product(models.Model):
     team = models.ForeignKey(Team)
 
     class Meta:
-        db_table = 'wp_product'
+        db_table = 'product'
 
 
 class Module(models.Model):
@@ -92,29 +99,29 @@ class Module(models.Model):
     product = models.ForeignKey(Product)
 
     class Meta:
-        db_table = 'wp_module'
+        db_table = 'module'
 
 
 class TestCase(models.Model):
     name = models.CharField(max_length=100)
     module = models.ForeignKey(Module)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     class Meta:
-        db_table = 'wp_testcase'
+        db_table = 'testcase'
 
 
 class Task(models.Model):
     name = models.CharField(max_length=200)
     product = models.ForeignKey(Product)
     type = models.IntegerField(default=1)  # 1、串行，2、并行
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     testcases = models.ManyToManyField(TestCase, through='Task_TestCase')
 
     class Meta:
-        db_table = 'wp_task'
+        db_table = 'task'
 
 
 class Task_TestCase(models.Model):
@@ -122,7 +129,7 @@ class Task_TestCase(models.Model):
     testcase = models.ForeignKey(TestCase)
 
     class Meta:
-        db_table = 'wp_result'
+        db_table = 'result'
         unique_together = ("task", "testcase")  # 复合主键
 
 
@@ -133,7 +140,7 @@ class Bug(models.Model):
     tasks = models.ManyToManyField(Task, through='Task_TestCase_Bug')
 
     class Meta:
-        db_table = 'wp_bug'
+        db_table = 'bug'
 
 
 class Task_TestCase_Bug(models.Model):
@@ -142,7 +149,7 @@ class Task_TestCase_Bug(models.Model):
     bug = models.ForeignKey(Bug)
 
     class Meta:
-        db_table = 'wp_result_bug'
+        db_table = 'result_bug'
         unique_together = ("task", "testcase", "bug")  # 复合主键
 
 # class Module(models.Model):

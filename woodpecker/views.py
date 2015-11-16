@@ -13,7 +13,8 @@ from django.contrib.auth.decorators import login_required
 import time, urllib2, re, json,datetime
 
 
-#@login_required(login_url="/woodpecker/login/")
+
+@login_required(login_url="/woodpecker/login/")
 def index(request):
     tasks = Task.objects.all()
     return render_to_response("woodpecker/index.html", {"tasks": tasks}, context_instance=RequestContext(request))
@@ -55,14 +56,14 @@ def logout(request):
     return HttpResponseRedirect("/woodpecker/login/")
 
 
-#@login_required(login_url="/woodpecker/login/")
+@login_required(login_url="/woodpecker/login/")
 def about(request):
     # tasks = Task.objects.all()
     # return render_to_response("resp.html", {"tasks": tasks})
     return render(request, 'woodpecker/about.html', context_instance=RequestContext(request))
 
 
-#@login_required(login_url="/woodpecker/login/")
+@login_required(login_url="/woodpecker/login/")
 def task(request):
     tasks = Task.objects.all()
 

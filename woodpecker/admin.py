@@ -1,6 +1,3 @@
 from django.contrib import admin
-
-# Register your models here.
-import models
-
-#admin.site.register(models.DeviceModule)
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
