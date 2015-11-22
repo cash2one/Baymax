@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^blog/', include('blog.urls')),
     url(r'^woodpecker/', include('woodpecker.urls')),
     url(r'^news/', include('news.urls')),
+	url(r'^nav/', include('news.urls')),
 )
